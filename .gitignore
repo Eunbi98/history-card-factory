@@ -1,0 +1,6 @@
+node_modules/
+remotion/node_modules/
+output/
+remotion/output/
+.env
+.DS_Store

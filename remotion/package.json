@@ -1,0 +1,23 @@
+{
+  "name": "history-card-remotion",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "preview": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render": "remotion render src/index.ts HistoryCard output/K001_euljimundeok.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.504",
+    "@remotion/media": "4.0.504",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.504",
+    "@fontsource/noto-sans-kr": "5.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.28",
+    "@types/react-dom": "18.3.7",
+    "typescript": "5.9.3"
+  }
+}
