@@ -16,6 +16,8 @@
     "make:k003": "python scripts/make.py K003",
     "preview:k003": "python scripts/make.py K003 --skip-tts --preview",
     "make:k004": "python scripts/make.py K004",
-    "preview:k004": "python scripts/make.py K004 --skip-tts --preview"
+    "preview:k004": "python scripts/make.py K004 --skip-tts --preview",
+    "make:k005": "python scripts/make.py K005",
+    "preview:k005": "python scripts/make.py K005 --skip-tts --preview"
   }
 }
