@@ -5,7 +5,7 @@
   "scripts": {
     "preview": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
-    "render": "remotion render src/index.ts HistoryCard output/K001_euljimundeok.mp4"
+    "render": "remotion render src/index.ts HistoryCard"
   },
   "dependencies": {
     "@remotion/cli": "4.0.504",
