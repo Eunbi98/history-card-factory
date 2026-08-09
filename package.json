@@ -1,11 +1,12 @@
 {
   "name": "history-card-factory",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "install:remotion": "npm --prefix remotion install",
     "setup:tts": "python -m pip install -r requirements.txt",
     "tts": "python scripts/generate_tts.py data/cards/K001_euljimundeok.json",
+    "derive": "python scripts/derive_candidates.py",
     "preview": "npm --prefix remotion run preview",
     "typecheck": "npm --prefix remotion run typecheck",
     "render": "npm --prefix remotion run render",

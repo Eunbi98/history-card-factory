@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "description": "이미 영상/카드로 등록된 개념 ID. 파생문제 중복 생성을 방지한다.",
+  "concepts": [
+    {
+      "conceptId": "K-GOGURYEO-EULJI",
+      "conceptTitle": "을지문덕과 살수대첩",
+      "cardId": "K001",
+      "status": "video-template"
+    }
+  ]
+}

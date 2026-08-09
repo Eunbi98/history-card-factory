@@ -1,0 +1,124 @@
+{
+  "sourceCardId": "K001",
+  "sourceTitle": "을지문덕과 살수대첩",
+  "policy": {
+    "maxDerivedVideos": 5,
+    "skipIfConceptAlreadyExists": true,
+    "rule": "각 보기의 핵심 개념이 시험 중요 개념이면 별도 파생 문제로 생성"
+  },
+  "summary": {
+    "choiceCount": 5,
+    "candidateCount": 4,
+    "skippedCount": 1
+  },
+  "candidates": [
+    {
+      "sourceCardId": "K001",
+      "sourceQuestion": "다음 중 을지문덕의 활동으로 옳은 것은?",
+      "sourceChoiceNumber": 1,
+      "sourceChoiceText": "귀주에서 거란군을 크게 물리쳤다.",
+      "conceptId": "K-GORYEO-GANGGAMCHAN",
+      "conceptTitle": "강감찬과 귀주대첩",
+      "status": "candidate",
+      "questionType": "기출형 5지선다",
+      "generationPlan": {
+        "targetConcept": "강감찬과 귀주대첩",
+        "preserveExamSkill": true,
+        "copySourceWording": false,
+        "requiredFields": [
+          "question",
+          "choices",
+          "correctChoice",
+          "explanation",
+          "wrongTraps",
+          "memoryScene",
+          "memoryTip"
+        ],
+        "rule": "기출 출제포인트는 유지하되 문제·보기 문장은 자체 작성한다."
+      }
+    },
+    {
+      "sourceCardId": "K001",
+      "sourceQuestion": "다음 중 을지문덕의 활동으로 옳은 것은?",
+      "sourceChoiceNumber": 3,
+      "sourceChoiceText": "안시성에서 당 태종의 군대를 막아 냈다.",
+      "conceptId": "K-GOGURYEO-ANSI",
+      "conceptTitle": "안시성 전투",
+      "status": "candidate",
+      "questionType": "기출형 5지선다",
+      "generationPlan": {
+        "targetConcept": "안시성 전투",
+        "preserveExamSkill": true,
+        "copySourceWording": false,
+        "requiredFields": [
+          "question",
+          "choices",
+          "correctChoice",
+          "explanation",
+          "wrongTraps",
+          "memoryScene",
+          "memoryTip"
+        ],
+        "rule": "기출 출제포인트는 유지하되 문제·보기 문장은 자체 작성한다."
+      }
+    },
+    {
+      "sourceCardId": "K001",
+      "sourceQuestion": "다음 중 을지문덕의 활동으로 옳은 것은?",
+      "sourceChoiceNumber": 4,
+      "sourceChoiceText": "황산벌에서 신라군과 맞서 싸웠다.",
+      "conceptId": "K-BAEKJE-GYEBAEK",
+      "conceptTitle": "계백과 황산벌 전투",
+      "status": "candidate",
+      "questionType": "기출형 5지선다",
+      "generationPlan": {
+        "targetConcept": "계백과 황산벌 전투",
+        "preserveExamSkill": true,
+        "copySourceWording": false,
+        "requiredFields": [
+          "question",
+          "choices",
+          "correctChoice",
+          "explanation",
+          "wrongTraps",
+          "memoryScene",
+          "memoryTip"
+        ],
+        "rule": "기출 출제포인트는 유지하되 문제·보기 문장은 자체 작성한다."
+      }
+    },
+    {
+      "sourceCardId": "K001",
+      "sourceQuestion": "다음 중 을지문덕의 활동으로 옳은 것은?",
+      "sourceChoiceNumber": 5,
+      "sourceChoiceText": "한산도에서 학익진을 펼쳐 왜군을 격파하였다.",
+      "conceptId": "K-JOSEON-YISUNSIN",
+      "conceptTitle": "이순신과 한산도 대첩",
+      "status": "candidate",
+      "questionType": "기출형 5지선다",
+      "generationPlan": {
+        "targetConcept": "이순신과 한산도 대첩",
+        "preserveExamSkill": true,
+        "copySourceWording": false,
+        "requiredFields": [
+          "question",
+          "choices",
+          "correctChoice",
+          "explanation",
+          "wrongTraps",
+          "memoryScene",
+          "memoryTip"
+        ],
+        "rule": "기출 출제포인트는 유지하되 문제·보기 문장은 자체 작성한다."
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "conceptId": "K-GOGURYEO-EULJI",
+      "conceptTitle": "을지문덕과 살수대첩",
+      "choiceNumber": 2,
+      "reason": "source_correct_concept"
+    }
+  ]
+}
