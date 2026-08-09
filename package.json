@@ -1,15 +1,17 @@
 {
   "name": "history-card-factory",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "install:remotion": "npm --prefix remotion install",
     "setup:tts": "python -m pip install -r requirements.txt",
-    "tts": "python scripts/generate_tts.py data/cards/K001_euljimundeok.json",
+    "tts": "python scripts/generate_tts.py remotion/src/card.json",
     "derive": "python scripts/derive_candidates.py",
     "preview": "npm --prefix remotion run preview",
     "typecheck": "npm --prefix remotion run typecheck",
     "render": "npm --prefix remotion run render",
-    "build:first": "npm run tts && npm run render"
+    "make": "python scripts/make.py",
+    "make:k002": "python scripts/make.py K002",
+    "preview:k002": "python scripts/make.py K002 --skip-tts --preview"
   }
 }
