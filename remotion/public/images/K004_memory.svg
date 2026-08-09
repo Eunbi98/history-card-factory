@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#263342"/>
+      <stop offset="0.55" stop-color="#7d5946"/>
+      <stop offset="1" stop-color="#bd814b"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#74533b"/>
+      <stop offset="1" stop-color="#2b211c"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="70%" cy="25%" r="38%">
+      <stop offset="0" stop-color="#ffd596" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#ffd596" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="24"/></filter>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <rect width="1080" height="1920" fill="url(#sun)"/>
+
+  <path d="M0 930L120 825L245 902L360 785L515 910L650 820L790 905L925 770L1080 900V1220H0Z" fill="#373334"/>
+  <path d="M0 1030L165 940L325 1015L470 920L645 1005L820 900L1080 1015V1285H0Z" fill="#4a3b35"/>
+  <path d="M0 1110L1080 1035V1920H0Z" fill="url(#ground)"/>
+
+  <g opacity=".18" filter="url(#soft)" fill="#e4b57d">
+    <circle cx="180" cy="1190" r="110"/><circle cx="430" cy="1250" r="135"/><circle cx="745" cy="1165" r="120"/><circle cx="930" cy="1300" r="150"/>
+  </g>
+
+  <!-- distant Silla army -->
+  <g fill="#262625" stroke="#201c19" stroke-width="5">
+    <g transform="translate(640 1110)"><circle cy="0" r="14"/><path d="M0 12l-17 52h34z"/><path d="M9 15l26-92" fill="none"/></g>
+    <g transform="translate(705 1140)"><circle cy="0" r="14"/><path d="M0 12l-17 52h34z"/><path d="M9 15l26-92" fill="none"/></g>
+    <g transform="translate(775 1095)"><circle cy="0" r="14"/><path d="M0 12l-17 52h34z"/><path d="M9 15l26-92" fill="none"/></g>
+    <g transform="translate(850 1145)"><circle cy="0" r="14"/><path d="M0 12l-17 52h34z"/><path d="M9 15l26-92" fill="none"/></g>
+    <g transform="translate(925 1105)"><circle cy="0" r="14"/><path d="M0 12l-17 52h34z"/><path d="M9 15l26-92" fill="none"/></g>
+    <g transform="translate(1000 1160)"><circle cy="0" r="14"/><path d="M0 12l-17 52h34z"/><path d="M9 15l26-92" fill="none"/></g>
+    <g transform="translate(625 1215)"><circle cy="0" r="13"/><path d="M0 11l-15 48h30z"/></g>
+    <g transform="translate(690 1250)"><circle cy="0" r="13"/><path d="M0 11l-15 48h30z"/></g>
+    <g transform="translate(760 1210)"><circle cy="0" r="13"/><path d="M0 11l-15 48h30z"/></g>
+    <g transform="translate(835 1260)"><circle cy="0" r="13"/><path d="M0 11l-15 48h30z"/></g>
+    <g transform="translate(910 1225)"><circle cy="0" r="13"/><path d="M0 11l-15 48h30z"/></g>
+    <g transform="translate(985 1280)"><circle cy="0" r="13"/><path d="M0 11l-15 48h30z"/></g>
+  </g>
+
+  <!-- opposing banners -->
+  <g stroke="#30231e" stroke-width="8">
+    <path d="M830 1150V850"/><path d="M950 1200V915"/>
+  </g>
+  <path d="M830 855l118 43-118 52z" fill="#842f2c"/>
+  <path d="M950 920l100 38-100 48z" fill="#7a2a28"/>
+
+  <!-- Baekje soldiers -->
+  <g stroke="#31251f" stroke-width="7">
+    <g transform="translate(170 1280)"><path d="M-20 78l-18 118M20 78l20 118"/><rect x="-34" y="0" width="68" height="88" rx="12" fill="#4d4843"/><circle cy="-28" r="25" fill="#9b7055"/><path d="M-29-35L0-86L29-35Z" fill="#5d554c"/><path d="M30 15l55-150"/></g>
+    <g transform="translate(315 1360) scale(.9)"><path d="M-20 78l-18 118M20 78l20 118"/><rect x="-34" width="68" height="88" rx="12" fill="#4d4843"/><circle cy="-28" r="25" fill="#9b7055"/><path d="M-29-35L0-86L29-35Z" fill="#5d554c"/><path d="M30 15l55-150"/></g>
+    <g transform="translate(420 1260) scale(.86)"><path d="M-20 78l-18 118M20 78l20 118"/><rect x="-34" width="68" height="88" rx="12" fill="#4d4843"/><circle cy="-28" r="25" fill="#9b7055"/><path d="M-29-35L0-86L29-35Z" fill="#5d554c"/><path d="M30 15l55-150"/></g>
+  </g>
+
+  <!-- Gyebaek foreground -->
+  <g transform="translate(505 835)">
+    <path d="M-145 190L-205 710L20 630L115 190Z" fill="#7b3028" opacity=".95"/>
+    <path d="M-82 585L-142 1030H-60L-25 590Z" fill="#37302c"/>
+    <path d="M18 590L74 1030H154L66 585Z" fill="#37302c"/>
+    <rect x="-125" y="130" width="250" height="470" rx="38" fill="#494541"/>
+    <g stroke="#846b52" stroke-width="7" opacity=".9">
+      <path d="M-102 205H102M-105 265H105M-108 325H108M-108 385H108M-105 445H105M-100 505H100"/>
+      <path d="M-70 150V550M-22 145V565M26 145V565M74 150V550"/>
+    </g>
+    <path d="M-122 180L-202 310L-142 470L-72 275Z" fill="#4a4541"/>
+    <path d="M122 180L205 315L158 485L74 272Z" fill="#4a4541"/>
+    <rect x="-38" y="40" width="76" height="105" fill="#a97759"/>
+    <ellipse cx="0" cy="-15" rx="82" ry="88" fill="#a97759"/>
+    <path d="M-66 10Q0 122 66 10L50 112L0 150L-50 112Z" fill="#30231f"/>
+    <path d="M-98-42Q0-155 98-42L86 10H-86Z" fill="#4e4944"/>
+    <path d="M-22-130L0-225L24-130Z" fill="#5f5145"/>
+    <path d="M0-220Q45-295 15-365Q-24-316-14-250Z" fill="#a23c30"/>
+    <path d="M-42-26l30-5M14-31l30 5" stroke="#35251f" stroke-width="7"/>
+    <path d="M0-18l-5 44" stroke="#6f4b3b" stroke-width="5"/>
+    <path d="M155 425L310 720" stroke="#d3c7ae" stroke-width="16"/>
+    <path d="M132 405L182 460" stroke="#5d3928" stroke-width="20"/>
+  </g>
+
+  <!-- foreground terrain -->
+  <g fill="#403126">
+    <ellipse cx="120" cy="1690" rx="90" ry="32"/><ellipse cx="895" cy="1740" rx="120" ry="38"/><ellipse cx="650" cy="1840" rx="80" ry="28"/>
+  </g>
+  <g stroke="#5c5535" stroke-width="5" opacity=".7">
+    <path d="M80 1840l-20-70m23 72l28-62M190 1780l-17-58m20 60l30-50M920 1810l-18-72m22 72l31-65M790 1880l-20-60m22 64l28-52"/>
+  </g>
+</svg>
