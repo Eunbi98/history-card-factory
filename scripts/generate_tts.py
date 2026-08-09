@@ -27,7 +27,8 @@ def make_tone(path: Path, frequency: float, seconds: float, volume: float = 0.25
 
 
 async def main(card_path: Path) -> None:
-    card = json.loads(card_path.read_text(encoding='utf-8'))
+    # utf-8-sig accepts both normal UTF-8 and UTF-8 files that contain a BOM.
+    card = json.loads(card_path.read_text(encoding='utf-8-sig'))
     try:
         import edge_tts
     except ImportError as exc:
@@ -43,9 +44,8 @@ async def main(card_path: Path) -> None:
     make_tone(sounds / 'countdown.wav', 720, 0.16, 0.2)
     make_tone(sounds / 'correct.wav', 1040, 0.28, 0.22)
 
-    # Remotion can play WAV directly. The TSX expects mp3 names, so write a tiny manifest hint.
     print(f'TTS ready: {out}')
-    print('Generated WAV effects. If ffmpeg is available, convert them to mp3 or rename TSX paths to wav.')
+    print('Generated WAV effects: countdown.wav, correct.wav')
 
 
 if __name__ == '__main__':
