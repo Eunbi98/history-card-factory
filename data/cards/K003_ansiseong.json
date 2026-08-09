@@ -24,13 +24,21 @@
   ],
   "memoryScene": "645년 고구려 안시성 성벽 위에서 고구려군이 당나라 대군의 공격을 막아 내는 장면. 성벽과 방어 장면이 한눈에 보이는 세로 구도.",
   "memoryHeadline": "안시성에서 당 태종의 공격을 막아 내다",
-  "memoryTip": "안시성의 ‘안’에서 당을 막았다",
-  "mnemonic": {
-    "line1": "안시성의 안에서",
-    "line2": "당 태종의 군대를 막았다!",
-    "chain": "안시성 → 안에서 방어 → 당 태종",
-    "note": "‘안’ 소리를 연결해서 기억하세요",
-    "highlight": "안"
-  },
+  "memoryTip": "안시성의 안에서 당을 막았다",
+  "mnemonicParts": [
+    {"text": "안", "accent": true},
+    {"text": "시성의 "},
+    {"text": "안", "accent": true},
+    {"text": "에서\n당 태종의 군대를 막았다!"}
+  ],
+  "mnemonicSublineParts": [
+    {"text": "안", "accent": true},
+    {"text": "시성 → "},
+    {"text": "안", "accent": true},
+    {"text": "에서 방어 → 당 태종"}
+  ],
+  "recapTitle": "안시성 전투",
+  "recapResult": "당 태종의 공격 저지",
+  "recapDetail": "645년, 고구려가 안시성에서 당군을 막아 냄",
   "image": "images/K003_memory.png"
 }
