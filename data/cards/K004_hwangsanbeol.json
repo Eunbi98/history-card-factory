@@ -1,0 +1,50 @@
+{
+  "id": "K004",
+  "title": "황산벌 전투",
+  "period": "백제",
+  "sourceExam": "기출 개념 참고",
+  "sourceQuestion": null,
+  "question": "다음 중 황산벌 전투에 대한 설명으로 옳은 것은?",
+  "choices": [
+    "을지문덕이 수나라 군대를 살수에서 격파하였다",
+    "고구려군이 안시성에서 당 태종의 군대를 막아 냈다",
+    "강감찬이 귀주에서 거란군을 크게 물리쳤다",
+    "계백이 황산벌에서 신라군에 맞서 싸웠다",
+    "권율이 행주산성에서 왜군을 물리쳤다"
+  ],
+  "correctChoice": 4,
+  "answer": "계백이 황산벌에서 신라군에 맞서 싸웠다",
+  "explanation": "660년 백제의 계백은 황산벌에서 결사대를 이끌고 신라의 김유신 군대에 맞서 싸웠습니다.",
+  "examLink": "660년 · 백제 · 계백 · 황산벌 · 김유신",
+  "wrongTraps": [
+    ["① 살수대첩", "을지문덕 · 수나라"],
+    ["② 안시성 전투", "고구려 · 당 태종"],
+    ["③ 귀주대첩", "강감찬 · 거란"],
+    ["⑤ 행주대첩", "권율 · 왜군"]
+  ],
+  "memoryScene": "660년 황산벌에서 백제 장군 계백과 결사대가 전열을 갖추고 다가오는 신라군에 맞서는 장면. 계백과 백제군이 중심에 보이고 넓은 전장이 함께 들어오는 9:16 세로 구도.",
+  "memoryHeadline": "백제 계백이 황산벌에서 신라군에 맞서다",
+  "memoryTip": "계황백! 계백은 황산벌에서 백제를 지켰다",
+  "mnemonicParts": [
+    {"text": "계황백!", "accent": true},
+    {"text": "\n"},
+    {"text": "계", "accent": true},
+    {"text": "백은 "},
+    {"text": "황", "accent": true},
+    {"text": "산벌에서 "},
+    {"text": "백", "accent": true},
+    {"text": "제를 지켰다!"}
+  ],
+  "mnemonicSublineParts": [
+    {"text": "계", "accent": true},
+    {"text": "백 → "},
+    {"text": "황", "accent": true},
+    {"text": "산벌 → "},
+    {"text": "백", "accent": true},
+    {"text": "제"}
+  ],
+  "recapTitle": "황산벌 전투",
+  "recapResult": "백제 · 계백 · 황산벌",
+  "recapDetail": "660년, 계백이 황산벌에서 신라 김유신 군대에 맞서 싸움",
+  "image": "images/K004_memory.png"
+}
