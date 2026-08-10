@@ -15,6 +15,8 @@ STATE = ROOT / "data" / "automation" / "production_state.json"
 EXAM79 = ROOT / "data" / "exams" / "79.json"
 JOB_JSON = ROOT / "data" / "automation" / "next_job.json"
 JOB_PROMPT = ROOT / "data" / "automation" / "next_job_prompt.txt"
+CARDS = ROOT / "data" / "cards"
+OUTPUT = ROOT / "output"
 
 
 def load_json(path: Path, default: Any = None) -> Any:
@@ -28,11 +30,30 @@ def save_json(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def rendered_concepts() -> set[str]:
+    done: set[str] = set()
+    if not CARDS.exists():
+        return done
+    for card_path in CARDS.glob("*.json"):
+        try:
+            card = load_json(card_path, {})
+            card_id = str(card.get("id", "")).strip()
+            concept = str(card.get("concept", "")).strip()
+            if not card_id or not concept:
+                continue
+            if any(OUTPUT.glob(f"{card_id}_*.mp4")):
+                done.add(concept)
+        except Exception:
+            continue
+    return done
+
+
 def choose_candidate(force_concept: str | None = None) -> dict[str, Any]:
     subprocess.run([sys.executable, str(ROOT / "scripts" / "build_exam_priority.py")], cwd=ROOT, check=True)
     priority = load_json(PRIORITY, {"items": []})
     state = load_json(STATE, {"items": {}})
     statuses = state.get("items", {})
+    rendered = rendered_concepts()
 
     if force_concept:
         for item in priority.get("items", []):
@@ -41,9 +62,11 @@ def choose_candidate(force_concept: str | None = None) -> dict[str, Any]:
         raise SystemExit(f"우선순위 목록에서 개념을 찾을 수 없습니다: {force_concept}")
 
     for item in priority.get("items", []):
-        status = statuses.get(item.get("concept"), {}).get("status")
-        if status != "done":
-            return item
+        concept = str(item.get("concept", ""))
+        status = statuses.get(concept, {}).get("status")
+        if status == "done" or concept in rendered:
+            continue
+        return item
     raise SystemExit("제작할 미완료 우선순위 후보가 없습니다.")
 
 
