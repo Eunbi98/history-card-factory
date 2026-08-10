@@ -8,6 +8,7 @@
     "tts": "python scripts/generate_tts.py remotion/src/card.json",
     "derive": "python scripts/derive_candidates.py",
     "priority": "python scripts/build_exam_priority.py",
+    "web": "python scripts/build_exam_priority.py && python -m http.server 8000",
     "preview": "npm --prefix remotion run preview",
     "typecheck": "npm --prefix remotion run typecheck",
     "render": "npm --prefix remotion run render",
