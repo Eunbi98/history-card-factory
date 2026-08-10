@@ -128,7 +128,6 @@ const Explanation = () => (
     <div style={{fontSize:52,fontWeight:900,color:GREEN}}>핵심 해설</div>
     <div style={{marginTop:46,fontSize:40,lineHeight:1.62,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{current.explanation}</div>
     {current.examLink ? <div style={{marginTop:42,fontSize:27,lineHeight:1.55,color:'#E6E6E2',fontWeight:700,...KOREAN_WRAP}}>{current.examLink}</div> : null}
-    <Audio src={staticFile(`tts/${current.id}/explanation.mp3`)} volume={1} />
   </Stage>
 );
 
@@ -189,11 +188,11 @@ export const HistoryCardVideo: React.FC = () => (
   <AbsoluteFill style={{background:BG}}>
     <Sequence from={0*FPS} durationInFrames={7*FPS}><Question /></Sequence>
     <Sequence from={7*FPS} durationInFrames={3*FPS}><Answer /></Sequence>
-    <Sequence from={10*FPS} durationInFrames={3*FPS}><Explanation /></Sequence>
-    <Sequence from={13*FPS} durationInFrames={4*FPS}><Wrong /></Sequence>
-    <Sequence from={17*FPS} durationInFrames={6*FPS}><MemoryImage /></Sequence>
-    <Sequence from={23*FPS} durationInFrames={3*FPS}><Mnemonic /></Sequence>
-    <Sequence from={26*FPS} durationInFrames={4*FPS}><Recap /></Sequence>
-    <Sequence from={30*FPS} durationInFrames={3*FPS}><CTA /></Sequence>
+    <Sequence from={10*FPS} durationInFrames={4*FPS}><Explanation /></Sequence>
+    <Sequence from={14*FPS} durationInFrames={4*FPS}><Wrong /></Sequence>
+    <Sequence from={18*FPS} durationInFrames={6*FPS}><MemoryImage /></Sequence>
+    <Sequence from={24*FPS} durationInFrames={3*FPS}><Mnemonic /></Sequence>
+    <Sequence from={27*FPS} durationInFrames={4*FPS}><Recap /></Sequence>
+    <Sequence from={31*FPS} durationInFrames={3*FPS}><CTA /></Sequence>
   </AbsoluteFill>
 );
