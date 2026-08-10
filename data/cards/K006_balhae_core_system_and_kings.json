@@ -3,8 +3,8 @@
   "concept": "발해 핵심 제도와 왕 계보",
   "title": "발해의 제도와 왕",
   "period": "통일신라·발해",
-  "sourceExam": "제79회 심화 7번 출제포인트 기반 자체 문제",
-  "question": "다음 설명에 해당하는 나라는?",
+  "sourceExam": "기출 개념 참고",
+  "question": "5경 15부 62주의 지방 행정 체제를 두고, 상경 용천부를 중심지로 삼았으며 인안·대흥 같은 독자 연호를 사용한 나라는?",
   "choices": [
     "통일 신라",
     "발해",
@@ -14,8 +14,8 @@
   ],
   "correctChoice": 2,
   "answer": "발해",
-  "explanation": "발해는 5경 15부 62주의 지방 행정 체제를 갖추었고, 상경 용천부를 중심지로 삼았습니다. 왕들은 인안, 대흥과 같은 독자적인 연호를 사용했습니다.",
-  "examLink": "5경 15부 62주 · 상경 용천부 · 인안 · 대흥",
+  "explanation": "발해는 5경 15부 62주의 지방 행정 체제를 갖추고 상경 용천부를 중심지로 삼았습니다. 무왕은 인안, 문왕은 대흥이라는 독자 연호를 사용했습니다.",
+  "examLink": "발해 · 5경 15부 62주 · 상경 용천부 · 인안 · 대흥",
   "wrongTraps": [
     ["① 통일 신라", "9주 5소경 · 9서당 10정"],
     ["③ 고구려", "국내성 · 평양성 · 제가 회의"],
@@ -23,23 +23,25 @@
     ["⑤ 고려", "5도 양계 · 2군 6위"]
   ],
   "image": "images/K006_memory.png",
-  "memoryHeadline": "발해는 5경 15부 62주를 두고 독자 연호를 사용했다",
-  "memoryTip": "발해 → 5경 15부 62주 → 상경 용천부 → 인안·대흥",
+  "memoryHeadline": "발해 숫자는 오! 십오! 육이!",
+  "memoryTip": "오(5)경 → 십오(15)부 → 육이(62)주",
   "mnemonicParts": [
     {"text": "발해는 ", "accent": false},
-    {"text": "5경 15부 62주", "accent": true},
-    {"text": "로 넓은 영토를 나누고 ", "accent": false},
-    {"text": "독자 연호", "accent": true},
-    {"text": "까지 사용했다", "accent": false}
+    {"text": "오!", "accent": true},
+    {"text": " 경, ", "accent": false},
+    {"text": "십오!", "accent": true},
+    {"text": " 부, ", "accent": false},
+    {"text": "육이!", "accent": true},
+    {"text": " 주", "accent": false}
   ],
   "mnemonicSublineParts": [
     {"text": "5경", "accent": true},
     {"text": " → ", "accent": false},
-    {"text": "상경", "accent": true},
+    {"text": "15부", "accent": true},
     {"text": " → ", "accent": false},
-    {"text": "인안·대흥", "accent": true}
+    {"text": "62주", "accent": true}
   ],
   "recapTitle": "발해",
-  "recapResult": "5경 15부 62주",
-  "recapDetail": "상경 용천부 · 독자 연호 인안·대흥"
+  "recapResult": "오! 십오! 육이!",
+  "recapDetail": "5경 · 15부 · 62주 / 인안·대흥 독자 연호"
 }
