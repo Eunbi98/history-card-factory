@@ -78,6 +78,32 @@ def card_summary(path: Path) -> dict:
     }
 
 
+def merged_state() -> dict:
+    state = read_json(STATE, {"items": {}})
+    items = state.setdefault("items", {})
+    if CARDS.exists():
+        for card_path in CARDS.glob("*.json"):
+            try:
+                card = read_json(card_path, {})
+                card_id = str(card.get("id", "")).strip()
+                concept = str(card.get("concept", "")).strip()
+                if not card_id or not concept:
+                    continue
+                out = output_for(card_id)
+                if out:
+                    items.setdefault(concept, {})
+                    items[concept].update({
+                        "status": "done",
+                        "cardId": card_id,
+                        "cardPath": str(card_path.relative_to(ROOT)).replace("\\", "/"),
+                        "output": str(out.relative_to(ROOT)).replace("\\", "/"),
+                        "inferredFromOutput": True,
+                    })
+            except Exception:
+                continue
+    return state
+
+
 def set_state(concept: str, **values) -> None:
     if not concept:
         return
@@ -88,7 +114,7 @@ def set_state(concept: str, **values) -> None:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "HistoryCardFactory/0.3"
+    server_version = "HistoryCardFactory/0.4"
 
     def send_json(self, payload: dict, status: int = 200) -> None:
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -120,7 +146,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         path = unquote(urlparse(self.path).path)
         if path == "/api/status":
-            self.send_json(read_json(STATE, {"items": {}}))
+            self.send_json(merged_state())
             return
         if path == "/api/cards":
             cards = []
@@ -254,7 +280,7 @@ def main() -> int:
     host = "127.0.0.1"
     port = 8000
     print(f"History Card Factory: http://{host}:{port}")
-    print("OpenAI API는 사용하지 않습니다. ChatGPT에서 만든 PNG를 업로드하면 TTS와 Remotion 렌더가 이어집니다.")
+    print("OpenAI API는 사용하지 않습니다. 기존 렌더 결과도 자동으로 완료 상태에 반영합니다.")
     ThreadingHTTPServer((host, port), Handler).serve_forever()
     return 0
 
