@@ -5,42 +5,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>History Card Factory</title>
   <style>
-    :root{font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;color:#172033;background:#f3f5f9}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 60px}.top{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.top h1{margin:0;font-size:30px}.top p{margin:8px 0 0;color:#667085}.badge{padding:8px 12px;border-radius:999px;background:#e8eefc;color:#3157a4;font-weight:700}.hero{display:grid;grid-template-columns:1.4fr .6fr;gap:16px;margin-bottom:18px}.card{background:white;border:1px solid #e4e8f0;border-radius:18px;padding:22px;box-shadow:0 5px 20px rgba(30,50,90,.05)}.eyebrow{font-size:13px;font-weight:800;color:#667085;margin-bottom:8px}.next-title{font-size:28px;font-weight:900;margin-bottom:12px}.reason{color:#475467;line-height:1.55}.score{font-size:44px;font-weight:900}.grade{font-size:14px;font-weight:900;margin-left:6px}.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.metric{background:#f8fafc;border-radius:12px;padding:12px}.metric b{display:block;font-size:20px}.metric span{font-size:12px;color:#667085}.toolbar{display:flex;gap:8px;align-items:center;margin:18px 0 10px}.toolbar button{border:1px solid #d0d5dd;background:white;border-radius:10px;padding:9px 13px;font-weight:700;cursor:pointer}.toolbar button.active{background:#172033;color:white;border-color:#172033}.table-wrap{overflow:auto;background:white;border:1px solid #e4e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:13px 14px;border-bottom:1px solid #edf0f5;text-align:left}th{font-size:12px;color:#667085;background:#fbfcfe;position:sticky;top:0}td{font-size:14px}.rank{font-weight:900}.concept{font-weight:800}.pill{display:inline-block;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;background:#eef2f7}.s{background:#fee4e2;color:#b42318}.a{background:#ffefd6;color:#b54708}.b{background:#ecfdf3;color:#027a48}.empty{padding:30px;text-align:center;color:#667085}@media(max-width:760px){.hero{grid-template-columns:1fr}.top{align-items:start;flex-direction:column}.metric-row{grid-template-columns:1fr 1fr 1fr}}
+    :root{font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;color:#172033;background:#f3f5f9}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1180px;margin:0 auto;padding:32px 24px 60px}.top{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.top h1{margin:0;font-size:30px}.top p{margin:8px 0 0;color:#667085}.badge{padding:8px 12px;border-radius:999px;background:#e8eefc;color:#3157a4;font-weight:700}.hero{display:grid;grid-template-columns:1.4fr .6fr;gap:16px;margin-bottom:18px}.card{background:white;border:1px solid #e4e8f0;border-radius:18px;padding:22px;box-shadow:0 5px 20px rgba(30,50,90,.05)}.eyebrow{font-size:13px;font-weight:800;color:#667085;margin-bottom:8px}.next-title{font-size:28px;font-weight:900;margin-bottom:12px}.reason{color:#475467;line-height:1.55}.score{font-size:44px;font-weight:900}.grade{font-size:14px;font-weight:900;margin-left:6px}.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.metric{background:#f8fafc;border-radius:12px;padding:12px}.metric b{display:block;font-size:20px}.metric span{font-size:12px;color:#667085}.make-box{margin-top:18px;padding-top:18px;border-top:1px solid #edf0f5}.make-btn{width:100%;border:0;border-radius:12px;padding:14px 16px;background:#172033;color:white;font-weight:900;font-size:15px;cursor:pointer}.make-btn:disabled{opacity:.45;cursor:not-allowed}.status{margin-top:10px;font-size:13px;color:#667085;white-space:pre-wrap;max-height:150px;overflow:auto}.ok{color:#027a48}.err{color:#b42318}.toolbar{display:flex;gap:8px;align-items:center;margin:18px 0 10px}.toolbar button{border:1px solid #d0d5dd;background:white;border-radius:10px;padding:9px 13px;font-weight:700;cursor:pointer}.toolbar button.active{background:#172033;color:white;border-color:#172033}.table-wrap{overflow:auto;background:white;border:1px solid #e4e8f0;border-radius:16px}table{width:100%;border-collapse:collapse;min-width:940px}th,td{padding:13px 14px;border-bottom:1px solid #edf0f5;text-align:left}th{font-size:12px;color:#667085;background:#fbfcfe;position:sticky;top:0}td{font-size:14px}.rank{font-weight:900}.concept{font-weight:800}.pill{display:inline-block;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;background:#eef2f7}.s{background:#fee4e2;color:#b42318}.a{background:#ffefd6;color:#b54708}.b{background:#ecfdf3;color:#027a48}.empty{padding:30px;text-align:center;color:#667085}@media(max-width:760px){.hero{grid-template-columns:1fr}.top{align-items:start;flex-direction:column}.metric-row{grid-template-columns:1fr 1fr 1fr}}
   </style>
 </head>
 <body>
   <main class="wrap">
-    <div class="top"><div><h1>한국사 기억카드 제작 대시보드</h1><p>기출 태깅 → 우선순위 계산 → 다음 영상 후보</p></div><div class="badge" id="examBadge">데이터 불러오는 중</div></div>
+    <div class="top"><div><h1>한국사 기억카드 제작 대시보드</h1><p>기출 분석 → 우선순위 → JSON → AI 기억장면 → TTS → Remotion 렌더</p></div><div class="badge" id="examBadge">데이터 불러오는 중</div></div>
     <section class="hero">
-      <article class="card"><div class="eyebrow">다음 영상 후보</div><div class="next-title" id="nextTitle">-</div><div class="reason" id="nextReason">우선순위 데이터를 계산하세요.</div><div class="metric-row"><div class="metric"><b id="direct">-</b><span>누적 직접 출제</span></div><div class="metric"><b id="source">-</b><span>79회 자료 등장</span></div><div class="metric"><b id="option">-</b><span>79회 보기 등장</span></div></div></article>
+      <article class="card">
+        <div class="eyebrow">다음 영상 후보</div><div class="next-title" id="nextTitle">-</div><div class="reason" id="nextReason">우선순위 데이터를 계산하세요.</div>
+        <div class="metric-row"><div class="metric"><b id="direct">-</b><span>누적 직접 출제</span></div><div class="metric"><b id="source">-</b><span>79회 자료 등장</span></div><div class="metric"><b id="option">-</b><span>79회 보기 등장</span></div></div>
+        <div class="make-box"><button class="make-btn" id="makeBtn">다음 영상 제작</button><div class="status" id="makeStatus">버튼을 누르면 카드 JSON 생성부터 MP4 렌더까지 순서대로 실행합니다.</div></div>
+      </article>
       <article class="card"><div class="eyebrow">우선점수</div><div><span class="score" id="nextScore">-</span><span class="grade" id="nextGrade"></span></div><div class="reason" id="rule" style="margin-top:12px"></div></article>
     </section>
     <div class="toolbar"><button class="active" data-filter="all">전체</button><button data-filter="S">S등급</button><button data-filter="A">A등급</button></div>
-    <div class="table-wrap"><table><thead><tr><th>순위</th><th>개념</th><th>시대</th><th>기존 누적</th><th>79 직접</th><th>자료</th><th>보기</th><th>점수</th><th>등급</th><th>제작 사유</th></tr></thead><tbody id="tbody"></tbody></table></div>
+    <div class="table-wrap"><table><thead><tr><th>순위</th><th>개념</th><th>시대</th><th>기존 누적</th><th>79 직접</th><th>자료</th><th>보기</th><th>점수</th><th>등급</th><th>제작 상태</th></tr></thead><tbody id="tbody"></tbody></table></div>
   </main>
 <script>
-let allItems=[];
+let allItems=[]; let state={items:{}}; let nextItem=null;
 const $=s=>document.querySelector(s);
+function stateOf(name){return state.items?.[name]?.status||'미착수'}
+function labelStatus(v){return ({done:'완료',rendering:'렌더중',generating:'생성중',ready:'렌더대기',failed:'실패'})[v]||v}
 function render(items){
   const body=$('#tbody'); body.innerHTML='';
   if(!items.length){body.innerHTML='<tr><td colspan="10" class="empty">해당 등급의 후보가 없습니다.</td></tr>';return;}
-  for(const x of items){
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td class="rank">${x.rank}</td><td class="concept">${x.concept}</td><td>${x.era||'-'}</td><td>${x.previousDirectCount||0}</td><td>${x.direct79||0}</td><td>${x.source79||0}</td><td>${x.option79||0}</td><td><b>${x.score}</b></td><td><span class="pill ${String(x.grade).toLowerCase()}">${x.grade}</span></td><td>${x.reason||''}</td>`;
-    body.appendChild(tr);
-  }
+  for(const x of items){const tr=document.createElement('tr');const st=stateOf(x.concept);tr.innerHTML=`<td class="rank">${x.rank}</td><td class="concept">${x.concept}</td><td>${x.era||'-'}</td><td>${x.previousDirectCount||0}</td><td>${x.direct79||0}</td><td>${x.source79||0}</td><td>${x.option79||0}</td><td><b>${x.score}</b></td><td><span class="pill ${String(x.grade).toLowerCase()}">${x.grade}</span></td><td>${labelStatus(st)}</td>`;body.appendChild(tr);}
 }
+function pickNext(){return allItems.find(x=>!['done','rendering','generating'].includes(stateOf(x.concept)))||null}
+function paintNext(){nextItem=pickNext();if(!nextItem){$('#nextTitle').textContent='제작 대기 후보 없음';$('#makeBtn').disabled=true;return;}const n=nextItem;$('#nextTitle').textContent=n.concept;$('#nextReason').textContent=n.reason;$('#nextScore').textContent=n.score;$('#nextGrade').textContent=n.grade;$('#direct').textContent=(n.previousDirectCount||0)+(n.direct79||0);$('#source').textContent=n.source79||0;$('#option').textContent=n.option79||0;$('#makeBtn').disabled=false;}
+async function loadState(){try{const r=await fetch('/api/status',{cache:'no-store'});if(r.ok)state=await r.json()}catch(e){state={items:{}}}}
 async function init(){
-  try{
-    const res=await fetch('/data/automation/priority.json',{cache:'no-store'}); if(!res.ok) throw new Error('priority.json 없음');
-    const data=await res.json(); allItems=data.items||[];
-    $('#examBadge').textContent=`제${data.latestExam}회 반영`;
-    $('#rule').textContent=data.scoringRule||'';
-    const n=allItems[0];
-    if(n){$('#nextTitle').textContent=n.concept;$('#nextReason').textContent=n.reason;$('#nextScore').textContent=n.score;$('#nextGrade').textContent=n.grade;$('#direct').textContent=(n.previousDirectCount||0)+(n.direct79||0);$('#source').textContent=n.source79||0;$('#option').textContent=n.option79||0;}
-    render(allItems);
-  }catch(e){$('#examBadge').textContent='우선순위 생성 필요';$('#nextReason').textContent='터미널에서 npm run priority를 실행한 뒤 새로고침하세요.';render([]);}
+  try{await loadState();const res=await fetch('/data/automation/priority.json',{cache:'no-store'});if(!res.ok)throw new Error('priority.json 없음');const data=await res.json();allItems=data.items||[];$('#examBadge').textContent=`제${data.latestExam}회 반영`;$('#rule').textContent=data.scoringRule||'';paintNext();render(allItems)}catch(e){$('#examBadge').textContent='우선순위 생성 필요';$('#nextReason').textContent='npm run web 실행 시 우선순위를 자동 생성합니다.';render([])}
 }
+$('#makeBtn').addEventListener('click',async()=>{if(!nextItem)return;const btn=$('#makeBtn'),status=$('#makeStatus');btn.disabled=true;btn.textContent='제작 중...';status.className='status';status.textContent=`${nextItem.concept} 제작 시작\nJSON 생성 → 이미지 생성 → TTS → Remotion 렌더`;try{const r=await fetch('/api/make-next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({concept:nextItem.concept})});const data=await r.json();if(!r.ok||!data.ok)throw new Error(data.stderr||data.error||'제작 실패');status.className='status ok';status.textContent='제작 완료\n'+(data.stdout||'');await loadState();paintNext();render(allItems)}catch(e){status.className='status err';status.textContent='제작 실패\n'+e.message;await loadState();render(allItems)}finally{btn.textContent='다음 영상 제작';if(nextItem)btn.disabled=false;}});
 document.querySelectorAll('.toolbar button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.toolbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;render(f==='all'?allItems:allItems.filter(x=>x.grade===f));}));
 init();
 </script>
