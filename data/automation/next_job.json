@@ -1,0 +1,40 @@
+{
+  "preparedAt": "2026-08-10T06:57:35.092638+00:00",
+  "mode": "chatgpt-manual-generation",
+  "usesOpenAIAPI": false,
+  "candidate": {
+    "concept": "발해 핵심 제도와 왕 계보",
+    "conceptId": "H0311",
+    "era": "통일신라·발해",
+    "question": 7,
+    "previousDirectCount": 3,
+    "direct79": 1,
+    "source79": 1,
+    "option79": 0,
+    "previousScore": 97,
+    "score": 100,
+    "grade": "S",
+    "reason": "79회 직접 출제 · 자료 1 · 보기 0",
+    "rank": 1
+  },
+  "examContext": {
+    "question": 7,
+    "answer": 3,
+    "directConcept": "발해 핵심 제도와 왕 계보",
+    "conceptId": "H0311",
+    "era": "통일신라·발해",
+    "questionType": "국가식별",
+    "sourceAppearances": [
+      "발해 5경 15부 62주·상경 용천부·고구려·숙신 계승"
+    ],
+    "optionAppearances": [
+      "장문휴 산둥 공격",
+      "천문령 전투",
+      "인안·대흥 연호",
+      "신라 9서당10정"
+    ],
+    "examPoint": "발해 제도와 독자 연호",
+    "verification": "official-pdf-answer-key"
+  },
+  "nextStep": "Copy next_job_prompt.txt into the current ChatGPT conversation and generate the card JSON and image there."
+}

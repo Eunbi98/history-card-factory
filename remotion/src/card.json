@@ -1,43 +1,95 @@
 {
-  "id": "K002",
-  "title": "강감찬과 귀주대첩",
-  "period": "고려",
+  "id": "K006",
+  "concept": "발해 핵심 제도와 왕 계보",
+  "title": "발해의 제도와 왕",
+  "period": "통일신라·발해",
   "sourceExam": "기출 개념 참고",
-  "question": "다음 중 강감찬과 관련된 전투는?",
+  "question": "5경 15부 62주의 지방 행정 체제를 두고, 상경 용천부를 중심지로 삼았으며 인안·대흥 같은 독자 연호를 사용한 나라는?",
   "choices": [
-    "살수대첩",
-    "귀주대첩",
-    "황산벌 전투",
-    "행주대첩",
-    "한산도 대첩"
+    "통일 신라",
+    "발해",
+    "고구려",
+    "후고구려",
+    "고려"
   ],
   "correctChoice": 2,
-  "answer": "귀주대첩",
-  "explanation": "강감찬은 1019년 귀주에서 거란군을 크게 물리쳤습니다.",
-  "examLink": "1019년 · 강감찬 · 귀주대첩 · 거란 3차 침입",
+  "answer": "발해",
+  "explanation": "발해는 5경 15부 62주의 지방 행정 체제를 갖추고 상경 용천부를 중심지로 삼았습니다. 무왕은 인안, 문왕은 대흥이라는 독자 연호를 사용했습니다.",
+  "examLink": "발해 · 5경 15부 62주 · 상경 용천부 · 인안 · 대흥",
   "wrongTraps": [
-    ["① 살수대첩", "을지문덕 · 수나라"],
-    ["③ 황산벌 전투", "계백 · 신라"],
-    ["④ 행주대첩", "권율 · 왜군"],
-    ["⑤ 한산도 대첩", "이순신 · 왜군"]
+    [
+      "① 통일 신라",
+      "9주 5소경 · 9서당 10정"
+    ],
+    [
+      "③ 고구려",
+      "국내성 · 평양성 · 제가 회의"
+    ],
+    [
+      "④ 후고구려",
+      "궁예 · 철원 · 광평성"
+    ],
+    [
+      "⑤ 고려",
+      "5도 양계 · 2군 6위"
+    ]
   ],
-  "image": "images/K002_memory.png",
-  "memoryHeadline": "강감찬, 귀주에서 거란군을 크게 물리치다",
-  "memoryTip": "강감찬 → 귀주 → 거란 격퇴",
+  "image": "images/K006_memory.png",
+  "memoryHeadline": "발해 숫자는 오! 십오! 육이!",
+  "memoryTip": "오(5)경 → 십오(15)부 → 육이(62)주",
   "mnemonicParts": [
-    {"text": "강감찬은 "},
-    {"text": "귀", "accent": true},
-    {"text": "주에서 거란군의 "},
-    {"text": "귀", "accent": true},
-    {"text": "로를 막았다!"}
+    {
+      "text": "발해는 ",
+      "accent": false
+    },
+    {
+      "text": "오!",
+      "accent": true
+    },
+    {
+      "text": " 경, ",
+      "accent": false
+    },
+    {
+      "text": "십오!",
+      "accent": true
+    },
+    {
+      "text": " 부, ",
+      "accent": false
+    },
+    {
+      "text": "육이!",
+      "accent": true
+    },
+    {
+      "text": " 주",
+      "accent": false
+    }
   ],
   "mnemonicSublineParts": [
-    {"text": "귀", "accent": true},
-    {"text": "주 → "},
-    {"text": "귀", "accent": true},
-    {"text": "로 → 강감찬"}
+    {
+      "text": "5경",
+      "accent": true
+    },
+    {
+      "text": " → ",
+      "accent": false
+    },
+    {
+      "text": "15부",
+      "accent": true
+    },
+    {
+      "text": " → ",
+      "accent": false
+    },
+    {
+      "text": "62주",
+      "accent": true
+    }
   ],
-  "recapTitle": "강감찬",
-  "recapResult": "귀주대첩 승리",
-  "recapDetail": "1019년, 거란군을 크게 격파"
+  "recapTitle": "발해",
+  "recapResult": "오! 십오! 육이!",
+  "recapDetail": "5경 · 15부 · 62주 / 인안·대흥 독자 연호"
 }
