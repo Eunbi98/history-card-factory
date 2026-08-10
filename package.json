@@ -1,6 +1,6 @@
 {
   "name": "history-card-factory",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "scripts": {
     "install:remotion": "npm --prefix remotion install",
@@ -9,6 +9,7 @@
     "derive": "python scripts/derive_candidates.py",
     "priority": "python scripts/build_exam_priority.py",
     "prepare:next": "python scripts/prepare_next.py",
+    "youtube": "python scripts/build_youtube_meta.py",
     "web": "python scripts/build_exam_priority.py && python scripts/web_server.py",
     "preview": "npm --prefix remotion run preview",
     "typecheck": "npm --prefix remotion run typecheck",
