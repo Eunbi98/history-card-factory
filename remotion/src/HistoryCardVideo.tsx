@@ -39,11 +39,14 @@ type Card = {
   correctChoice: number;
   answer: string;
   explanation: string;
+  explanationHighlights?: string[];
   examLink?: string;
   wrongTraps?: WrongTrap[];
   image: string;
   memoryHeadline?: string;
   memoryTip?: string;
+  mnemonicLead?: string;
+  mnemonicBodyParts?: MnemonicPart[];
   mnemonicParts?: MnemonicPart[];
   mnemonicSublineParts?: MnemonicPart[];
   recapTitle?: string;
@@ -75,6 +78,17 @@ const Stage: React.FC<{children:React.ReactNode;section?:string}> = ({children,s
 const renderParts = (parts?: MnemonicPart[]) => (parts || []).map((part,index) => (
   <React.Fragment key={`${part.text}-${index}`}><span style={{color:part.accent ? ORANGE : undefined}}>{part.text}</span></React.Fragment>
 ));
+
+const renderHighlightedText = (text: string, highlights?: string[]) => {
+  const keywords = (highlights || []).filter(Boolean).sort((a,b) => b.length - a.length);
+  if (!keywords.length) return text;
+  const escaped = keywords.map((keyword) => keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const regex = new RegExp(`(${escaped.join('|')})`, 'g');
+  return text.split(regex).map((part,index) => {
+    const highlighted = keywords.includes(part);
+    return <React.Fragment key={`${part}-${index}`}><span style={{color:highlighted ? ORANGE : undefined,fontWeight:highlighted ? 900 : undefined}}>{part}</span></React.Fragment>;
+  });
+};
 
 const ChoiceList: React.FC<{highlight?:number}> = ({highlight}) => (
   <div style={{marginTop:40,display:'grid',gap:14,width:'100%'}}>
@@ -108,7 +122,11 @@ const Question = () => {
         <div style={{fontSize:22,fontWeight:900,color:active ? YELLOW : ORANGE,marginBottom:18}}>{active ? `${secondsLeft}초 안에 골라보세요` : '5초 안에 골라보세요'}</div>
         <div style={{fontSize:compactQuestion ? 44 : 46,lineHeight:1.34,fontWeight:900,letterSpacing:-2.1,padding:'0 8px',whiteSpace:compactQuestion ? 'nowrap' : 'normal',...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{current.question}</div>
         <ChoiceList />
-        {active ? <Audio src={staticFile('sounds/countdown.wav')} volume={1} /> : null}
+        {[0,1,2,3,4].map((index) => (
+          <Sequence key={index} from={countdownStart + index * FPS} durationInFrames={Math.round(FPS * 0.45)}>
+            <Audio src={staticFile('sounds/countdown.wav')} volume={1} />
+          </Sequence>
+        ))}
       </div>
     </Stage>
   );
@@ -126,8 +144,8 @@ const Answer = () => (
 const Explanation = () => (
   <Stage section="핵심 해설">
     <div style={{fontSize:52,fontWeight:900,color:GREEN}}>핵심 해설</div>
-    <div style={{marginTop:46,fontSize:40,lineHeight:1.62,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{current.explanation}</div>
-    {current.examLink ? <div style={{marginTop:42,fontSize:27,lineHeight:1.55,color:'#E6E6E2',fontWeight:700,...KOREAN_WRAP}}>{current.examLink}</div> : null}
+    <div style={{marginTop:46,fontSize:40,lineHeight:1.62,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{renderHighlightedText(current.explanation,current.explanationHighlights)}</div>
+    {current.examLink ? <div style={{marginTop:42,fontSize:27,lineHeight:1.55,color:'#E6E6E2',fontWeight:700,...KOREAN_WRAP}}>{renderHighlightedText(current.examLink,current.explanationHighlights)}</div> : null}
   </Stage>
 );
 
@@ -188,8 +206,15 @@ const MemoryImage = () => (
 const Mnemonic = () => (
   <Stage section="기억법">
     <div style={{fontSize:54,fontWeight:900,color:GREEN}}>기억법</div>
-    <div style={{marginTop:50,fontSize:46,lineHeight:1.58,fontWeight:900,...KOREAN_WRAP}}>{current.mnemonicParts?.length ? renderParts(current.mnemonicParts) : current.memoryTip}</div>
-    {current.mnemonicSublineParts?.length ? <div style={{marginTop:38,fontSize:29,lineHeight:1.62,color:'#E2E2DE',fontWeight:800,...KOREAN_WRAP}}>{renderParts(current.mnemonicSublineParts)}</div> : null}
+    {current.mnemonicLead && current.mnemonicBodyParts?.length ? (
+      <>
+        <div style={{marginTop:44,fontSize:52,lineHeight:1.3,fontWeight:900,color:ORANGE,...KOREAN_WRAP}}>{current.mnemonicLead}</div>
+        <div style={{marginTop:28,fontSize:38,lineHeight:1.58,fontWeight:900,...KOREAN_WRAP}}>{renderParts(current.mnemonicBodyParts)}</div>
+      </>
+    ) : (
+      <div style={{marginTop:50,fontSize:46,lineHeight:1.58,fontWeight:900,...KOREAN_WRAP}}>{current.mnemonicParts?.length ? renderParts(current.mnemonicParts) : current.memoryTip}</div>
+    )}
+    {!current.mnemonicLead && current.mnemonicSublineParts?.length ? <div style={{marginTop:38,fontSize:29,lineHeight:1.62,color:'#E2E2DE',fontWeight:800,...KOREAN_WRAP}}>{renderParts(current.mnemonicSublineParts)}</div> : null}
   </Stage>
 );
 
