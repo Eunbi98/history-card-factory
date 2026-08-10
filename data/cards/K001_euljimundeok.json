@@ -14,16 +14,25 @@
   "correctChoice": 2,
   "answer": "살수대첩",
   "explanation": "을지문덕은 612년 살수에서 수나라 대군을 크게 격파했습니다.",
+  "explanationHighlights": ["을지문덕", "612년", "살수", "수나라"],
   "examLink": "612년 · 을지문덕 · 살수대첩 · 수나라",
   "wrongTraps": [
-    ["① 귀주대첩", "강감찬 · 거란"],
-    ["③ 안시성 전투", "양만춘 · 당"],
-    ["④ 한산도 대첩", "이순신 · 왜군"],
-    ["⑤ 황산벌 전투", "계백 · 신라"]
+    ["① 귀주대첩", "강감찬 · 거란", "귀주대첩"],
+    ["③ 안시성 전투", "고구려 · 당", "안시성"],
+    ["④ 한산도 대첩", "이순신 · 왜군", "한산도"],
+    ["⑤ 황산벌 전투", "계백 · 신라", "황산벌"]
   ],
   "image": "images/K001_memory.png",
   "memoryHeadline": "살수의 물과 을지문덕의 승리를 연결",
   "memoryTip": "살수 → 물 → 수나라 → 을지문덕",
+  "mnemonicLead": "살수물수!",
+  "mnemonicBodyParts": [
+    {"text": "살수의 "},
+    {"text": "물", "accent": true},
+    {"text": "에서 을지문덕이 "},
+    {"text": "수나라", "accent": true},
+    {"text": "를 이겼다!"}
+  ],
   "mnemonicParts": [
     {"text": "살수의 "},
     {"text": "물", "accent": true},
