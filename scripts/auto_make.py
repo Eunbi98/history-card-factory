@@ -107,7 +107,7 @@ def card_schema() -> dict[str, Any]:
     part = {
         "type": "object",
         "properties": {"text": {"type": "string"}, "accent": {"type": "boolean"}},
-        "required": ["text"],
+        "required": ["text", "accent"],
         "additionalProperties": False,
     }
     return {
@@ -164,6 +164,7 @@ def generate_card(client: OpenAI, candidate: dict[str, Any], context: dict[str, 
 5. 기억법은 억지 말장난보다 사건의 순서·공간·상징 이미지가 우선이다.
 6. imagePrompt는 9:16 세로형 교육 쇼츠의 기억장면 이미지 프롬프트다. 이미지 안에는 글자, 자막, 로고, 워터마크를 넣지 않는다.
 7. 역사적 세부사항을 확신할 수 없으면 위에 제공된 시험 포인트와 요소 범위 안에서만 작성한다.
+8. mnemonicParts와 mnemonicSublineParts의 모든 조각은 accent를 true 또는 false로 반드시 지정한다.
 """.strip()
 
     response = client.responses.create(
