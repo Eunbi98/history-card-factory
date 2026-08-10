@@ -27,7 +27,7 @@ const KOREAN_WRAP: React.CSSProperties = {
   overflowWrap: 'break-word',
 };
 
-type WrongTrap = [string, string];
+type WrongTrap = [string, string, string?];
 type MnemonicPart = {text: string; accent?: boolean};
 type Card = {
   id: string;
@@ -131,15 +131,42 @@ const Explanation = () => (
   </Stage>
 );
 
+const CIRCLED_NUMBERS = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨'];
+
+const getTrapChoiceNumber = (title: string): number | null => {
+  const circled = CIRCLED_NUMBERS.findIndex((mark) => title.trim().startsWith(mark));
+  if (circled >= 0) return circled + 1;
+  const numeric = title.trim().match(/^(\d+)/);
+  return numeric ? Number(numeric[1]) : null;
+};
+
+const getDefaultTrapKeyword = (title: string) => title
+  .replace(/^[①②③④⑤⑥⑦⑧⑨\d.\s]+/, '')
+  .trim();
+
+const HighlightedChoice: React.FC<{text:string;keyword:string}> = ({text,keyword}) => {
+  if (!keyword || !text.includes(keyword)) return <>{text}</>;
+  const [before,...rest] = text.split(keyword);
+  return <>{before}<span style={{color:ORANGE,fontWeight:900}}>{keyword}</span>{rest.join(keyword)}</>;
+};
+
 const Wrong = () => (
   <Stage section="오답 함정">
-    <div style={{fontSize:52,fontWeight:900,color:RED}}>오답 함정</div>
-    <div style={{marginTop:42,display:'grid',gridTemplateColumns:'1fr 1fr',gap:22,width:'100%'}}>
-      {(current.wrongTraps || []).map(([title,description]) => (
-        <div key={title} style={{minHeight:190,padding:'26px 24px',border:'1px solid #45494D',borderRadius:18,background:'rgba(255,255,255,.025)',display:'flex',flexDirection:'column',justifyContent:'center',...KOREAN_WRAP}}>
-          <div style={{fontSize:27,fontWeight:900}}>{title}</div><div style={{marginTop:16,fontSize:23,lineHeight:1.5,color:'#E4E4E1',fontWeight:700}}>{description}</div>
-        </div>
-      ))}
+    <div style={{fontSize:44,fontWeight:900,color:RED}}>오답 함정</div>
+    <div style={{marginTop:20,fontSize:34,lineHeight:1.36,fontWeight:900,letterSpacing:-1.4,...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{current.question}</div>
+    <div style={{marginTop:34,display:'grid',gap:14,width:'100%'}}>
+      {(current.wrongTraps || []).map(([title,description,explicitKeyword]) => {
+        const choiceNumber = getTrapChoiceNumber(title);
+        const choiceText = choiceNumber ? current.choices[choiceNumber - 1] : title;
+        const keyword = explicitKeyword || getDefaultTrapKeyword(title);
+        return (
+          <div key={title} style={{border:'2px solid #555A60',background:'rgba(255,255,255,.015)',borderRadius:16,padding:'17px 20px',display:'grid',gridTemplateColumns:'46px minmax(0,1fr) 150px',gap:14,alignItems:'center',fontSize:24,lineHeight:1.38,fontWeight:800,textAlign:'left',...KOREAN_WRAP}}>
+            <span style={{color:ORANGE,fontWeight:900}}>{choiceNumber || '•'}</span>
+            <span><HighlightedChoice text={choiceText} keyword={keyword} /></span>
+            <span style={{borderLeft:'1px solid #555A60',paddingLeft:16,color:YELLOW,fontSize:22,fontWeight:900,textAlign:'center',...KOREAN_WRAP}}>{description}</span>
+          </div>
+        );
+      })}
     </div>
   </Stage>
 );
