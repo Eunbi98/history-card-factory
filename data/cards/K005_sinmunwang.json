@@ -15,6 +15,12 @@
   "correctChoice": 2,
   "answer": "관료전을 지급하고 녹읍을 폐지하였다",
   "explanation": "신문왕은 통일 신라의 왕권을 강화하며 687년 관료전을 지급하고 689년 녹읍을 폐지했으며, 682년 국학을 설치해 인재를 양성했습니다.",
+  "explanationHighlights": [
+    "신문왕",
+    "관료전",
+    "녹읍",
+    "국학"
+  ],
   "examLink": "신문왕 · 관료전 지급 · 녹읍 폐지 · 국학 설치",
   "wrongTraps": [
     ["① 독서삼품과", "원성왕", "독서삼품과"],
@@ -25,6 +31,15 @@
   "memoryScene": "통일 신라 왕궁에서 신문왕이 중앙에 앉아 관리들에게 토지 문서를 내리고, 한편에서는 귀족의 녹읍 권한을 거두는 상징적 장면. 뒤편에는 국학에서 유학 경전을 배우는 학생들이 보이는 9:16 세로 구도. 이미지 내부 텍스트 없음.",
   "memoryHeadline": "신문왕은 관료전을 주고 녹읍을 없애고 국학을 세웠다",
   "memoryTip": "관녹국! 관료전 주고, 녹읍 없애고, 국학 세운 신문왕",
+  "mnemonicLead": "관녹국!",
+  "mnemonicBodyParts": [
+    {"text": "관료전", "accent": true},
+    {"text": " 주고, "},
+    {"text": "녹읍", "accent": true},
+    {"text": " 없애고, "},
+    {"text": "국학", "accent": true},
+    {"text": " 세운 신문왕!"}
+  ],
   "mnemonicParts": [
     {"text": "관녹국!", "accent": true},
     {"text": "\n"},
