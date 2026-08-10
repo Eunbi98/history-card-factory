@@ -12,6 +12,7 @@ from urllib.parse import unquote, urlparse
 ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "web"
 STATE = ROOT / "data" / "automation" / "production_state.json"
+JOB_PROMPT = ROOT / "data" / "automation" / "next_job_prompt.txt"
 
 
 def safe_path(base: Path, relative: str) -> Path | None:
@@ -24,7 +25,7 @@ def safe_path(base: Path, relative: str) -> Path | None:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "HistoryCardFactory/0.1"
+    server_version = "HistoryCardFactory/0.2"
 
     def send_json(self, payload: dict, status: int = 200) -> None:
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
@@ -73,7 +74,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         path = urlparse(self.path).path
-        if path != "/api/make-next":
+        if path != "/api/prepare-next":
             self.send_error(404)
             return
 
@@ -84,17 +85,21 @@ class Handler(BaseHTTPRequestHandler):
                 payload = json.loads(self.rfile.read(length).decode("utf-8"))
             except Exception:
                 payload = {}
-        command = [sys.executable, str(ROOT / "scripts" / "auto_make.py")]
+
+        command = [sys.executable, str(ROOT / "scripts" / "prepare_next.py")]
         concept = payload.get("concept")
         if concept:
             command += ["--concept", str(concept)]
+
         try:
             result = subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=False)
+            prompt = JOB_PROMPT.read_text(encoding="utf-8") if result.returncode == 0 and JOB_PROMPT.exists() else ""
             self.send_json({
                 "ok": result.returncode == 0,
                 "returncode": result.returncode,
                 "stdout": result.stdout,
                 "stderr": result.stderr,
+                "prompt": prompt,
             }, 200 if result.returncode == 0 else 500)
         except Exception as exc:
             self.send_json({"ok": False, "error": str(exc)}, 500)
@@ -107,7 +112,7 @@ def main() -> int:
     host = "127.0.0.1"
     port = 8000
     print(f"History Card Factory: http://{host}:{port}")
-    print("버튼 제작에는 OPENAI_API_KEY가 필요합니다.")
+    print("OpenAI API는 사용하지 않습니다. 다음 제작 대상을 준비한 뒤 ChatGPT 대화에서 카드와 이미지를 생성합니다.")
     ThreadingHTTPServer((host, port), Handler).serve_forever()
     return 0
 
