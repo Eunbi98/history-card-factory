@@ -11,6 +11,8 @@
     "typecheck": "npm --prefix remotion run typecheck",
     "render": "npm --prefix remotion run render",
     "make": "python scripts/make.py",
+    "make:k001": "python scripts/make.py K001",
+    "preview:k001": "python scripts/make.py K001 --skip-tts --preview",
     "make:k002": "python scripts/make.py K002",
     "preview:k002": "python scripts/make.py K002 --skip-tts --preview",
     "make:k003": "python scripts/make.py K003",
@@ -18,6 +20,8 @@
     "make:k004": "python scripts/make.py K004",
     "preview:k004": "python scripts/make.py K004 --skip-tts --preview",
     "make:k005": "python scripts/make.py K005",
-    "preview:k005": "python scripts/make.py K005 --skip-tts --preview"
+    "preview:k005": "python scripts/make.py K005 --skip-tts --preview",
+    "make:legacy": "npm run make:k001 && npm run make:k002 && npm run make:k003 && npm run make:k004",
+    "make:all": "npm run make:k001 && npm run make:k002 && npm run make:k003 && npm run make:k004 && npm run make:k005"
   }
 }
