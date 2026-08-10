@@ -14,16 +14,26 @@
   "correctChoice": 2,
   "answer": "귀주대첩",
   "explanation": "강감찬은 1019년 귀주에서 거란군을 크게 물리쳤습니다.",
+  "explanationHighlights": ["강감찬", "1019년", "귀주", "거란군"],
   "examLink": "1019년 · 강감찬 · 귀주대첩 · 거란 3차 침입",
   "wrongTraps": [
-    ["① 살수대첩", "을지문덕 · 수나라"],
-    ["③ 황산벌 전투", "계백 · 신라"],
-    ["④ 행주대첩", "권율 · 왜군"],
-    ["⑤ 한산도 대첩", "이순신 · 왜군"]
+    ["① 살수대첩", "을지문덕 · 수나라", "살수대첩"],
+    ["③ 황산벌 전투", "계백 · 신라", "황산벌"],
+    ["④ 행주대첩", "권율 · 왜군", "행주대첩"],
+    ["⑤ 한산도 대첩", "이순신 · 왜군", "한산도"]
   ],
   "image": "images/K002_memory.png",
   "memoryHeadline": "강감찬, 귀주에서 거란군을 크게 물리치다",
   "memoryTip": "강감찬 → 귀주 → 거란 격퇴",
+  "mnemonicLead": "강귀거!",
+  "mnemonicBodyParts": [
+    {"text": "강", "accent": true},
+    {"text": "감찬이 "},
+    {"text": "귀주", "accent": true},
+    {"text": "에서 "},
+    {"text": "거란", "accent": true},
+    {"text": "을 격퇴했다!"}
+  ],
   "mnemonicParts": [
     {"text": "강감찬은 "},
     {"text": "귀", "accent": true},
