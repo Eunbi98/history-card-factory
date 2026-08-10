@@ -1,12 +1,13 @@
 {
   "name": "history-card-factory",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "install:remotion": "npm --prefix remotion install",
     "setup:tts": "python -m pip install -r requirements.txt",
     "tts": "python scripts/generate_tts.py remotion/src/card.json",
     "derive": "python scripts/derive_candidates.py",
+    "priority": "python scripts/build_exam_priority.py",
     "preview": "npm --prefix remotion run preview",
     "typecheck": "npm --prefix remotion run typecheck",
     "render": "npm --prefix remotion run render",
