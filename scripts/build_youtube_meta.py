@@ -44,11 +44,19 @@ def short_question(card: dict) -> str:
     return f"{answer}의 핵심은?"
 
 
+def normalize_hook(text: str) -> str:
+    hook = str(text or "").strip()
+    if not hook:
+        return ""
+    return hook if hook.endswith(("!", "?")) else hook + "!"
+
+
 def build(card: dict) -> dict:
     title = card.get("title", "한국사 기억카드")
     answer = card.get("answer", title)
     exam = card.get("sourceExam", "한능검 핵심 개념")
-    memory = card.get("memoryTip", "")
+    memory = str(card.get("memoryTip", "")).strip()
+    memory_hook = normalize_hook(card.get("commentMemoryHook") or card.get("memoryHeadline") or answer)
     explanation = card.get("explanation", "")
     exam_link = card.get("examLink", "")
 
@@ -70,10 +78,15 @@ def build(card: dict) -> dict:
         "※ 기출 원문을 그대로 복제하지 않고 출제 포인트를 바탕으로 재구성한 학습 콘텐츠입니다."
     )
 
+    memory_lines = ["🧠 기억하기 팁", memory_hook]
+    if memory:
+        memory_lines.append(memory)
+
     fixed_comment = (
-        f"{answer}에서 가장 먼저 떠올려야 할 키워드는 무엇인가요?\n"
-        f"정답 확인: {exam_link or memory}\n"
-        "다음 기억카드에서 다뤘으면 하는 한국사 개념도 댓글로 남겨주세요."
+        "\n".join(memory_lines)
+        + "\n\n"
+        + f"시험 포인트: {exam_link or answer}\n"
+        + "다음 기억카드에서 다뤘으면 하는 한국사 개념도 댓글로 남겨주세요."
     )
 
     tags = [
