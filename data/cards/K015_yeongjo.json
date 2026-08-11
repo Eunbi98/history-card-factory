@@ -1,0 +1,70 @@
+{
+  "id": "K015",
+  "concept": "영조",
+  "title": "영조의 탕평과 민생 개혁",
+  "period": "조선",
+  "sourceExam": "기출 개념 참고",
+  "examRound": 79,
+  "examQuestion": 23,
+  "youtubeTitleQuestion": "청계천 준설을 시행한 왕은?",
+  "question": "청계천을 준설하고 준천사를 두어 한양 정비에 힘쓴 왕에 대한 설명으로 옳지 않은 것은?",
+  "questionShort": "청계천 준설을 시행한 왕에 대한 설명으로 옳지 않은 것은?",
+  "choices": [
+    "이인좌의 난을 진압하였다.",
+    "균역법을 시행하였다.",
+    "속대전을 편찬하였다.",
+    "탕평책을 추진하였다.",
+    "신해통공을 실시하였다."
+  ],
+  "correctChoice": 5,
+  "answer": "신해통공을 실시하였다.",
+  "explanation": "자료의 왕은 영조입니다. 영조는 청계천 준설을 시행하고 준천사를 두었으며, 탕평책을 추진하였습니다. 또한 이인좌의 난을 진압하고 균역법을 시행하였으며 속대전을 편찬하였습니다. 반면 신해통공은 정조 때 실시되었습니다.",
+  "explanationShort": "영조 = 청계천 준설 + 이인좌의 난 진압 + 탕평책 + 균역법 + 속대전",
+  "explanationHighlights": [
+    "영조",
+    "청계천 준설",
+    "이인좌의 난",
+    "탕평책",
+    "균역법",
+    "속대전"
+  ],
+  "examLink": "청계천 준설 · 이인좌의 난 · 탕평책 · 균역법 · 속대전",
+  "wrongTraps": [
+    ["① 이인좌의 난", "영조 때 발생한 반란 · 영조가 진압"],
+    ["② 균역법", "영조 때 군포 부담 완화"],
+    ["③ 속대전", "영조 때 편찬된 법전"],
+    ["④ 탕평책", "영조가 적극 추진한 붕당 완화 정책"]
+  ],
+  "wrongTrapsShort": [
+    ["이인좌의 난", "영조 때 진압"],
+    ["균역법", "군포 부담 완화"],
+    ["속대전", "영조 때 법전"],
+    ["탕평책", "붕당 완화"]
+  ],
+  "image": "images/K015_memory.png",
+  "memoryHeadline": "영조는 준·탕·균·속!",
+  "memoryTip": "준천 · 탕평 · 균역 · 속대전",
+  "commentMemoryHook": "준·탕·균·속 = 영조",
+  "mnemonicParts": [
+    {"text": "준", "accent": true},
+    {"text": "천 · ", "accent": false},
+    {"text": "탕", "accent": true},
+    {"text": "평 · ", "accent": false},
+    {"text": "균", "accent": true},
+    {"text": "역 · ", "accent": false},
+    {"text": "속", "accent": true},
+    {"text": "대전", "accent": false}
+  ],
+  "mnemonicSublineParts": [
+    {"text": "준천", "accent": true},
+    {"text": " → ", "accent": false},
+    {"text": "탕평", "accent": true},
+    {"text": " → ", "accent": false},
+    {"text": "균역", "accent": true},
+    {"text": " → ", "accent": false},
+    {"text": "속대전", "accent": true}
+  ],
+  "recapTitle": "영조",
+  "recapResult": "준천 + 탕평책 + 균역법 + 속대전",
+  "recapDetail": "청계천 준설 · 이인좌의 난 진압 · 민생 안정"
+}
