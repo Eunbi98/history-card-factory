@@ -29,6 +29,7 @@ const KOREAN_WRAP: React.CSSProperties = {
 
 type WrongTrap = [string, string, string?];
 type MnemonicPart = {text: string; accent?: boolean};
+type TimelineItem = {year: string; title: string; detail?: string; accent?: boolean};
 type Card = {
   id: string;
   title: string;
@@ -42,6 +43,9 @@ type Card = {
   explanation: string;
   explanationShort?: string;
   explanationHighlights?: string[];
+  explanationLayout?: 'default' | 'timeline';
+  timelineTitle?: string;
+  timelineItems?: TimelineItem[];
   examLink?: string;
   wrongTraps?: WrongTrap[];
   wrongTrapsShort?: WrongTrap[];
@@ -187,7 +191,32 @@ const HighlightedChoice: React.FC<{text:string;keyword:string}> = ({text,keyword
   return <>{before}<span style={{color:ORANGE,fontWeight:900}}>{keyword}</span>{rest.join(keyword)}</>;
 };
 
+const TimelineWrong = () => {
+  const items = current.timelineItems || [];
+  return (
+    <Stage section="사건 흐름">
+      <div style={{fontSize:44,fontWeight:900,color:RED}}>{current.timelineTitle || '사건 흐름'}</div>
+      <div style={{marginTop:30,width:'100%',display:'grid',gap:0,textAlign:'left'}}>
+        {items.map((item,index) => (
+          <div key={`${item.year}-${item.title}`} style={{position:'relative',display:'grid',gridTemplateColumns:'118px 34px minmax(0,1fr)',columnGap:12,minHeight:116}}>
+            <div style={{paddingTop:4,fontSize:28,fontWeight:900,color:item.accent ? YELLOW : ORANGE,textAlign:'right'}}>{item.year}</div>
+            <div style={{position:'relative',display:'flex',justifyContent:'center'}}>
+              {index < items.length - 1 ? <div style={{position:'absolute',top:24,bottom:-6,width:4,background:'#555A60',borderRadius:99}} /> : null}
+              <div style={{marginTop:9,width:20,height:20,borderRadius:'50%',background:item.accent ? YELLOW : ORANGE,boxShadow:item.accent ? '0 0 18px rgba(255,213,42,.35)' : 'none',zIndex:2}} />
+            </div>
+            <div style={{paddingBottom:24}}>
+              <div style={{fontSize:30,lineHeight:1.28,fontWeight:900,color:item.accent ? YELLOW : WHITE,...KOREAN_WRAP}}>{item.title}</div>
+              {item.detail ? <div style={{marginTop:8,fontSize:23,lineHeight:1.38,fontWeight:800,color:'#D8D8D3',...KOREAN_WRAP}}>{item.detail}</div> : null}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Stage>
+  );
+};
+
 const Wrong = () => {
+  if (current.explanationLayout === 'timeline' && current.timelineItems?.length) return <TimelineWrong />;
   const shortMode = Boolean(current.wrongTrapsShort?.length);
   const wrongQuestion = displayQuestion;
   const wrongQuestionLength = textLength(wrongQuestion);
