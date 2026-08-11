@@ -144,8 +144,8 @@ const Answer = () => (
 const Explanation = () => (
   <Stage section="핵심 해설">
     <div style={{fontSize:52,fontWeight:900,color:GREEN}}>핵심 해설</div>
-    <div style={{marginTop:46,fontSize:40,lineHeight:1.62,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{renderHighlightedText(current.explanation,current.explanationHighlights)}</div>
-    {current.examLink ? <div style={{marginTop:42,fontSize:27,lineHeight:1.55,color:'#E6E6E2',fontWeight:700,...KOREAN_WRAP}}>{renderHighlightedText(current.examLink,current.explanationHighlights)}</div> : null}
+    <div style={{marginTop:42,fontSize:40,lineHeight:1.58,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{renderHighlightedText(current.explanation,current.explanationHighlights)}</div>
+    {current.examLink ? <div style={{marginTop:36,fontSize:28,lineHeight:1.5,color:'#E6E6E2',fontWeight:800,...KOREAN_WRAP}}>{renderHighlightedText(current.examLink,current.explanationHighlights)}</div> : null}
   </Stage>
 );
 
@@ -168,20 +168,27 @@ const HighlightedChoice: React.FC<{text:string;keyword:string}> = ({text,keyword
   return <>{before}<span style={{color:ORANGE,fontWeight:900}}>{keyword}</span>{rest.join(keyword)}</>;
 };
 
+const isLongTrapDescription = (description: string) => description.replace(/\s/g, '').length > 18;
+
 const Wrong = () => (
   <Stage section="오답 함정">
     <div style={{fontSize:44,fontWeight:900,color:RED}}>오답 함정</div>
-    <div style={{marginTop:20,fontSize:34,lineHeight:1.36,fontWeight:900,letterSpacing:-1.4,...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{current.question}</div>
-    <div style={{marginTop:34,display:'grid',gap:14,width:'100%'}}>
+    <div style={{marginTop:18,fontSize:32,lineHeight:1.34,fontWeight:900,letterSpacing:-1.3,...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{current.question}</div>
+    <div style={{marginTop:28,display:'grid',gap:14,width:'100%'}}>
       {(current.wrongTraps || []).map(([title,description,explicitKeyword]) => {
         const choiceNumber = getTrapChoiceNumber(title);
         const choiceText = choiceNumber ? current.choices[choiceNumber - 1] : title;
         const keyword = explicitKeyword || getDefaultTrapKeyword(title);
+        const longDescription = isLongTrapDescription(description);
         return (
-          <div key={title} style={{border:'2px solid #555A60',background:'rgba(255,255,255,.015)',borderRadius:16,padding:'17px 20px',display:'grid',gridTemplateColumns:'46px minmax(0,1fr) 150px',gap:14,alignItems:'center',fontSize:24,lineHeight:1.38,fontWeight:800,textAlign:'left',...KOREAN_WRAP}}>
+          <div key={title} style={{border:'2px solid #555A60',background:'rgba(255,255,255,.015)',borderRadius:16,padding:longDescription ? '16px 20px 18px' : '17px 20px',display:'grid',gridTemplateColumns:longDescription ? '46px minmax(0,1fr)' : '46px minmax(0,1fr) 210px',columnGap:14,rowGap:10,alignItems:'center',fontSize:longDescription ? 26 : 25,lineHeight:1.38,fontWeight:800,textAlign:'left',...KOREAN_WRAP}}>
             <span style={{color:ORANGE,fontWeight:900}}>{choiceNumber || '•'}</span>
             <span><HighlightedChoice text={choiceText} keyword={keyword} /></span>
-            <span style={{borderLeft:'1px solid #555A60',paddingLeft:16,color:YELLOW,fontSize:22,fontWeight:900,textAlign:'center',...KOREAN_WRAP}}>{description}</span>
+            {longDescription ? (
+              <div style={{gridColumn:'2 / -1',borderTop:'1px solid #555A60',paddingTop:10,color:YELLOW,fontSize:24,lineHeight:1.42,fontWeight:900,textAlign:'left',...KOREAN_WRAP}}>{description}</div>
+            ) : (
+              <span style={{borderLeft:'1px solid #555A60',paddingLeft:16,color:YELLOW,fontSize:23,fontWeight:900,textAlign:'left',...KOREAN_WRAP}}>{description}</span>
+            )}
           </div>
         );
       })}
