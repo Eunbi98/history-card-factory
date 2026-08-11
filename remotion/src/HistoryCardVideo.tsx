@@ -196,20 +196,27 @@ const TimelineWrong = () => {
   return (
     <Stage section="사건 흐름">
       <div style={{fontSize:44,fontWeight:900,color:RED}}>{current.timelineTitle || '사건 흐름'}</div>
-      <div style={{marginTop:30,width:'100%',display:'grid',gap:0,textAlign:'left'}}>
-        {items.map((item,index) => (
-          <div key={`${item.year}-${item.title}`} style={{position:'relative',display:'grid',gridTemplateColumns:'118px 34px minmax(0,1fr)',columnGap:12,minHeight:116}}>
-            <div style={{paddingTop:4,fontSize:28,fontWeight:900,color:item.accent ? YELLOW : ORANGE,textAlign:'right'}}>{item.year}</div>
-            <div style={{position:'relative',display:'flex',justifyContent:'center'}}>
-              {index < items.length - 1 ? <div style={{position:'absolute',top:24,bottom:-6,width:4,background:'#555A60',borderRadius:99}} /> : null}
-              <div style={{marginTop:9,width:20,height:20,borderRadius:'50%',background:item.accent ? YELLOW : ORANGE,boxShadow:item.accent ? '0 0 18px rgba(255,213,42,.35)' : 'none',zIndex:2}} />
+      <div style={{position:'relative',marginTop:34,width:'100%',padding:'4px 0 2px'}}>
+        <div style={{position:'absolute',top:14,bottom:18,left:'50%',width:4,transform:'translateX(-50%)',background:'#555A60',borderRadius:99}} />
+        {items.map((item,index) => {
+          const left = index % 2 === 0;
+          const accentColor = item.accent ? YELLOW : ORANGE;
+          return (
+            <div key={`${item.year}-${item.title}`} style={{position:'relative',display:'grid',gridTemplateColumns:'1fr 108px 1fr',alignItems:'center',minHeight:118}}>
+              <div style={{gridColumn:left ? 1 : 3,padding:left ? '0 30px 0 0' : '0 0 0 30px',textAlign:left ? 'right' : 'left'}}>
+                <div style={{fontSize:29,lineHeight:1.28,fontWeight:900,color:item.accent ? YELLOW : WHITE,...KOREAN_WRAP}}>{item.title}</div>
+                {item.detail ? <div style={{marginTop:7,fontSize:21,lineHeight:1.38,fontWeight:800,color:'#D8D8D3',...KOREAN_WRAP}}>{item.detail}</div> : null}
+              </div>
+              <div style={{gridColumn:2,gridRow:1,position:'relative',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',zIndex:2}}>
+                <div style={{position:'absolute',top:'50%',left:left ? 0 : '50%',right:left ? '50%' : 0,height:2,background:'#555A60',transform:'translateY(-50%)'}} />
+                <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:7,background:BG,padding:'4px 8px',zIndex:3}}>
+                  <div style={{fontSize:25,lineHeight:1,fontWeight:900,color:accentColor}}>{item.year}</div>
+                  <div style={{width:item.accent ? 22 : 18,height:item.accent ? 22 : 18,borderRadius:'50%',background:accentColor,border:`3px solid ${BG}`,boxShadow:item.accent ? '0 0 20px rgba(255,213,42,.42)' : '0 0 0 2px rgba(255,138,0,.15)'}} />
+                </div>
+              </div>
             </div>
-            <div style={{paddingBottom:24}}>
-              <div style={{fontSize:30,lineHeight:1.28,fontWeight:900,color:item.accent ? YELLOW : WHITE,...KOREAN_WRAP}}>{item.title}</div>
-              {item.detail ? <div style={{marginTop:8,fontSize:23,lineHeight:1.38,fontWeight:800,color:'#D8D8D3',...KOREAN_WRAP}}>{item.detail}</div> : null}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Stage>
   );
