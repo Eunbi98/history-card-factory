@@ -36,6 +36,14 @@ def clean_tag(text: str) -> str:
     return re.sub(r"[^0-9A-Za-z가-힣]", "", text)
 
 
+def short_question(card: dict) -> str:
+    explicit = str(card.get("youtubeTitleQuestion", "")).strip()
+    if explicit:
+        return explicit.rstrip("?") + "?"
+    answer = str(card.get("answer") or card.get("title") or "한국사").strip()
+    return f"{answer}의 핵심은?"
+
+
 def build(card: dict) -> dict:
     title = card.get("title", "한국사 기억카드")
     answer = card.get("answer", title)
@@ -44,7 +52,14 @@ def build(card: dict) -> dict:
     explanation = card.get("explanation", "")
     exam_link = card.get("examLink", "")
 
-    youtube_title = f"[한능검 기억카드] {title} | {exam_link}" if exam_link else f"[한능검 기억카드] {title}"
+    exam_round = card.get("examRound")
+    exam_question = card.get("examQuestion")
+    title_question = short_question(card)
+
+    if exam_round and exam_question:
+        youtube_title = f"[#한능검 {exam_round}회 {exam_question}번] #{title_question} #쇼츠 #shorts"
+    else:
+        youtube_title = f"[#한능검] #{title_question} #쇼츠 #shorts"
     youtube_title = youtube_title[:100]
 
     description = (
