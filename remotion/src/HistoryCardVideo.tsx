@@ -35,13 +35,16 @@ type Card = {
   period?: string;
   sourceExam?: string;
   question: string;
+  questionShort?: string;
   choices: string[];
   correctChoice: number;
   answer: string;
   explanation: string;
+  explanationShort?: string;
   explanationHighlights?: string[];
   examLink?: string;
   wrongTraps?: WrongTrap[];
+  wrongTrapsShort?: WrongTrap[];
   image: string;
   memoryHeadline?: string;
   memoryTip?: string;
@@ -55,6 +58,11 @@ type Card = {
 };
 
 const current = card as Card;
+
+const textLength = (text = '') => text.replace(/\s/g, '').length;
+const displayQuestion = current.questionShort?.trim() || current.question;
+const displayExplanation = current.explanationShort?.trim() || current.explanation;
+const displayWrongTraps = current.wrongTrapsShort?.length ? current.wrongTrapsShort : (current.wrongTraps || []);
 
 const Header: React.FC<{section?: string}> = ({section = '기억 장면'}) => (
   <>
@@ -91,11 +99,13 @@ const renderHighlightedText = (text: string, highlights?: string[]) => {
 };
 
 const ChoiceList: React.FC<{highlight?:number}> = ({highlight}) => (
-  <div style={{marginTop:40,display:'grid',gap:14,width:'100%'}}>
+  <div style={{marginTop:36,display:'grid',gap:13,width:'100%'}}>
     {current.choices.map((text,index) => {
       const selected = highlight === index + 1;
+      const choiceLength = textLength(text);
+      const choiceFontSize = choiceLength > 34 ? 23 : choiceLength > 24 ? 24 : 25;
       return (
-        <div key={`${index}-${text}`} style={{border:`2px solid ${selected ? ORANGE : '#555A60'}`,background:selected ? ORANGE : 'rgba(255,255,255,.015)',borderRadius:16,padding:'16px 22px',display:'grid',gridTemplateColumns:'48px 1fr',alignItems:'center',fontSize:25,lineHeight:1.4,fontWeight:800,textAlign:'left',boxShadow:selected ? '0 0 24px rgba(255,138,0,.18)' : 'none',...KOREAN_WRAP}}>
+        <div key={`${index}-${text}`} style={{border:`2px solid ${selected ? ORANGE : '#555A60'}`,background:selected ? ORANGE : 'rgba(255,255,255,.015)',borderRadius:16,padding:choiceLength > 34 ? '13px 20px' : '15px 22px',display:'grid',gridTemplateColumns:'48px 1fr',alignItems:'center',fontSize:choiceFontSize,lineHeight:1.38,fontWeight:800,textAlign:'left',boxShadow:selected ? '0 0 24px rgba(255,138,0,.18)' : 'none',...KOREAN_WRAP}}>
           <span style={{color:selected ? WHITE : ORANGE,fontWeight:900}}>{index + 1}</span><span>{text}</span>
         </div>
       );
@@ -110,7 +120,10 @@ const Question = () => {
   const active = frame >= countdownStart;
   const secondsLeft = Math.max(1, 5 - Math.floor(elapsed / FPS));
   const progress = (elapsed % FPS) / FPS;
-  const compactQuestion = current.question.replace(/\s/g, '').length <= 18;
+  const questionLength = textLength(displayQuestion);
+  const compactQuestion = questionLength <= 18;
+  const questionFontSize = compactQuestion ? 44 : questionLength > 54 ? 38 : questionLength > 40 ? 41 : 44;
+  const questionLineHeight = questionLength > 54 ? 1.28 : 1.32;
   return (
     <Stage section="문제">
       <div style={{position:'relative',width:'100%',paddingTop:active ? 112 : 0}}>
@@ -119,8 +132,8 @@ const Question = () => {
             <div style={{width:'100%',height:'100%',borderRadius:'50%',background:BG,display:'grid',placeItems:'center',fontSize:35,fontWeight:900,color:WHITE}}>{secondsLeft}</div>
           </div>
         ) : null}
-        <div style={{fontSize:22,fontWeight:900,color:active ? YELLOW : ORANGE,marginBottom:18}}>{active ? `${secondsLeft}초 안에 골라보세요` : '5초 안에 골라보세요'}</div>
-        <div style={{fontSize:compactQuestion ? 44 : 46,lineHeight:1.34,fontWeight:900,letterSpacing:-2.1,padding:'0 8px',whiteSpace:compactQuestion ? 'nowrap' : 'normal',...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{current.question}</div>
+        <div style={{fontSize:22,fontWeight:900,color:active ? YELLOW : ORANGE,marginBottom:16}}>{active ? `${secondsLeft}초 안에 골라보세요` : '5초 안에 골라보세요'}</div>
+        <div style={{fontSize:questionFontSize,lineHeight:questionLineHeight,fontWeight:900,letterSpacing:-2,padding:'0 8px',whiteSpace:compactQuestion ? 'nowrap' : 'normal',...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{displayQuestion}</div>
         <ChoiceList />
         {[0,1,2,3,4].map((index) => (
           <Sequence key={index} from={countdownStart + index * FPS} durationInFrames={Math.round(FPS * 0.45)}>
@@ -141,13 +154,19 @@ const Answer = () => (
   </Stage>
 );
 
-const Explanation = () => (
-  <Stage section="핵심 해설">
-    <div style={{fontSize:52,fontWeight:900,color:GREEN}}>핵심 해설</div>
-    <div style={{marginTop:42,fontSize:40,lineHeight:1.58,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{renderHighlightedText(current.explanation,current.explanationHighlights)}</div>
-    {current.examLink ? <div style={{marginTop:36,fontSize:28,lineHeight:1.5,color:'#E6E6E2',fontWeight:800,...KOREAN_WRAP}}>{renderHighlightedText(current.examLink,current.explanationHighlights)}</div> : null}
-  </Stage>
-);
+const Explanation = () => {
+  const explanationLength = textLength(displayExplanation);
+  const shortMode = Boolean(current.explanationShort?.trim());
+  const explanationFontSize = shortMode ? 44 : explanationLength > 115 ? 34 : explanationLength > 82 ? 37 : 40;
+  const explanationLineHeight = shortMode ? 1.5 : explanationLength > 115 ? 1.48 : 1.55;
+  return (
+    <Stage section="핵심 해설">
+      <div style={{fontSize:52,fontWeight:900,color:GREEN}}>핵심 해설</div>
+      <div style={{marginTop:shortMode ? 48 : 40,fontSize:explanationFontSize,lineHeight:explanationLineHeight,fontWeight:800,letterSpacing:-1.2,...KOREAN_WRAP}}>{renderHighlightedText(displayExplanation,current.explanationHighlights)}</div>
+      {!shortMode && current.examLink ? <div style={{marginTop:32,fontSize:27,lineHeight:1.48,color:'#E6E6E2',fontWeight:800,...KOREAN_WRAP}}>{renderHighlightedText(current.examLink,current.explanationHighlights)}</div> : null}
+    </Stage>
+  );
+};
 
 const CIRCLED_NUMBERS = ['①','②','③','④','⑤','⑥','⑦','⑧','⑨'];
 
@@ -168,33 +187,38 @@ const HighlightedChoice: React.FC<{text:string;keyword:string}> = ({text,keyword
   return <>{before}<span style={{color:ORANGE,fontWeight:900}}>{keyword}</span>{rest.join(keyword)}</>;
 };
 
-const isLongTrapDescription = (description: string) => description.replace(/\s/g, '').length > 18;
-
-const Wrong = () => (
-  <Stage section="오답 함정">
-    <div style={{fontSize:44,fontWeight:900,color:RED}}>오답 함정</div>
-    <div style={{marginTop:18,fontSize:32,lineHeight:1.34,fontWeight:900,letterSpacing:-1.3,...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{current.question}</div>
-    <div style={{marginTop:28,display:'grid',gap:14,width:'100%'}}>
-      {(current.wrongTraps || []).map(([title,description,explicitKeyword]) => {
-        const choiceNumber = getTrapChoiceNumber(title);
-        const choiceText = choiceNumber ? current.choices[choiceNumber - 1] : title;
-        const keyword = explicitKeyword || getDefaultTrapKeyword(title);
-        const longDescription = isLongTrapDescription(description);
-        return (
-          <div key={title} style={{border:'2px solid #555A60',background:'rgba(255,255,255,.015)',borderRadius:16,padding:longDescription ? '16px 20px 18px' : '17px 20px',display:'grid',gridTemplateColumns:longDescription ? '46px minmax(0,1fr)' : '46px minmax(0,1fr) 210px',columnGap:14,rowGap:10,alignItems:'center',fontSize:longDescription ? 26 : 25,lineHeight:1.38,fontWeight:800,textAlign:'left',...KOREAN_WRAP}}>
-            <span style={{color:ORANGE,fontWeight:900}}>{choiceNumber || '•'}</span>
-            <span><HighlightedChoice text={choiceText} keyword={keyword} /></span>
-            {longDescription ? (
-              <div style={{gridColumn:'2 / -1',borderTop:'1px solid #555A60',paddingTop:10,color:YELLOW,fontSize:24,lineHeight:1.42,fontWeight:900,textAlign:'left',...KOREAN_WRAP}}>{description}</div>
-            ) : (
-              <span style={{borderLeft:'1px solid #555A60',paddingLeft:16,color:YELLOW,fontSize:23,fontWeight:900,textAlign:'left',...KOREAN_WRAP}}>{description}</span>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  </Stage>
-);
+const Wrong = () => {
+  const shortMode = Boolean(current.wrongTrapsShort?.length);
+  const wrongQuestion = displayQuestion;
+  const wrongQuestionLength = textLength(wrongQuestion);
+  const wrongQuestionFontSize = wrongQuestionLength > 54 ? 27 : wrongQuestionLength > 40 ? 29 : 31;
+  return (
+    <Stage section="오답 함정">
+      <div style={{fontSize:44,fontWeight:900,color:RED}}>오답 함정</div>
+      <div style={{marginTop:16,fontSize:wrongQuestionFontSize,lineHeight:1.3,fontWeight:900,letterSpacing:-1.2,...KOREAN_WRAP}}><span style={{color:ORANGE}}>Q. </span>{wrongQuestion}</div>
+      <div style={{marginTop:shortMode ? 24 : 26,display:'grid',gap:shortMode ? 12 : 13,width:'100%'}}>
+        {displayWrongTraps.map(([title,description,explicitKeyword]) => {
+          const choiceNumber = getTrapChoiceNumber(title);
+          const choiceText = choiceNumber ? current.choices[choiceNumber - 1] : title;
+          const keyword = explicitKeyword || getDefaultTrapKeyword(title);
+          const descriptionLength = textLength(description);
+          const longDescription = !shortMode && descriptionLength > 18;
+          return (
+            <div key={`${title}-${description}`} style={{border:'2px solid #555A60',background:'rgba(255,255,255,.015)',borderRadius:16,padding:shortMode ? '14px 18px' : longDescription ? '15px 19px 17px' : '16px 19px',display:'grid',gridTemplateColumns:shortMode ? '46px minmax(0,1fr) 230px' : longDescription ? '46px minmax(0,1fr)' : '46px minmax(0,1fr) 210px',columnGap:13,rowGap:9,alignItems:'center',fontSize:shortMode ? 24 : longDescription ? 25 : 24,lineHeight:1.35,fontWeight:800,textAlign:'left',...KOREAN_WRAP}}>
+              <span style={{color:ORANGE,fontWeight:900}}>{choiceNumber || '•'}</span>
+              <span><HighlightedChoice text={choiceText} keyword={keyword} /></span>
+              {longDescription ? (
+                <div style={{gridColumn:'2 / -1',borderTop:'1px solid #555A60',paddingTop:9,color:YELLOW,fontSize:23,lineHeight:1.38,fontWeight:900,textAlign:'left',...KOREAN_WRAP}}>{description}</div>
+              ) : (
+                <span style={{borderLeft:'1px solid #555A60',paddingLeft:15,color:YELLOW,fontSize:shortMode ? 22 : 23,fontWeight:900,textAlign:'left',...KOREAN_WRAP}}>{description}</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </Stage>
+  );
+};
 
 const MemoryImage = () => (
   <AbsoluteFill style={{background:BG,color:WHITE,fontFamily:FONT,overflow:'hidden',...KOREAN_WRAP}}>
