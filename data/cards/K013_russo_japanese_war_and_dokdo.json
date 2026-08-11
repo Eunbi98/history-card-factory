@@ -1,0 +1,88 @@
+{
+  "id": "K013",
+  "concept": "러일전쟁과 독도 불법 편입",
+  "title": "러일전쟁과 독도 불법 편입",
+  "period": "개항기·대한제국",
+  "sourceExam": "기출 개념 참고",
+  "examRound": 79,
+  "examQuestion": 32,
+  "youtubeTitleQuestion": "한일의정서 체결의 배경은?",
+  "question": "일본이 대한제국에 한일의정서를 강요하여 군사 전략상 필요한 지점을 사용할 수 있게 하고, 이후 독도를 불법 편입해 가던 시기의 배경이 된 전쟁은?",
+  "questionShort": "한일의정서 강요와 독도 불법 편입이 이어진 배경이 된 전쟁은?",
+  "choices": [
+    "고종 강제 퇴위",
+    "군대 해산",
+    "화폐 정리 사업",
+    "러일전쟁",
+    "일진회 활동"
+  ],
+  "correctChoice": 4,
+  "answer": "러일전쟁",
+  "explanation": "1904년 러일전쟁이 시작되자 일본은 대한제국에 한일의정서를 강요하여 군사 전략상 필요한 지점을 사용할 수 있도록 하였습니다. 이어 침략을 확대하면서 1905년 독도를 시마네현에 불법 편입하였습니다.",
+  "explanationShort": "러일전쟁 → 한일의정서 강요 → 군사 전략상 지점 사용 → 독도 불법 편입",
+  "explanationHighlights": [
+    "러일전쟁",
+    "한일의정서",
+    "군사 전략상 지점 사용",
+    "독도 불법 편입"
+  ],
+  "explanationLayout": "timeline",
+  "timelineTitle": "일본 침략의 흐름",
+  "timelineItems": [
+    {
+      "year": "1904",
+      "title": "러일전쟁",
+      "detail": "일본의 대한제국 군사 침략 본격화",
+      "accent": true
+    },
+    {
+      "year": "1904",
+      "title": "한일의정서",
+      "detail": "군사 전략상 필요한 지점 사용 강요"
+    },
+    {
+      "year": "1905",
+      "title": "독도 불법 편입",
+      "detail": "시마네현 고시로 일방적 편입"
+    },
+    {
+      "year": "1905",
+      "title": "을사늑약",
+      "detail": "대한제국 외교권 박탈"
+    }
+  ],
+  "examLink": "러일전쟁 · 한일의정서 · 군사 전략상 지점 사용 · 독도 불법 편입",
+  "wrongTraps": [
+    ["① 고종 강제 퇴위", "1907년 · 헤이그 특사 파견 이후 일제가 강제로 퇴위시킴"],
+    ["② 군대 해산", "1907년 · 정미7조약 이후 대한제국 군대 해산"],
+    ["③ 화폐 정리 사업", "1905년 · 메가타가 주도한 대한제국 경제 침탈"],
+    ["⑤ 일진회", "일제의 침략에 협력한 친일 단체"]
+  ],
+  "wrongTrapsShort": [
+    ["고종 강제 퇴위", "1907 · 헤이그 특사 이후"],
+    ["군대 해산", "1907 · 정미7조약 이후"],
+    ["화폐 정리 사업", "1905 · 메가타 · 경제 침탈"],
+    ["일진회", "친일 단체 · 일제 침략 협력"]
+  ],
+  "image": "images/K013_memory.png",
+  "memoryHeadline": "러일 뒤엔 의정서, 의정서 뒤엔 독도!",
+  "memoryTip": "러일 → 의정서 → 독도",
+  "commentMemoryHook": "러일 → 의정서 → 독도!",
+  "mnemonicParts": [
+    {"text": "러일", "accent": true},
+    {"text": " 뒤엔 ", "accent": false},
+    {"text": "의정서", "accent": true},
+    {"text": ", 그 뒤엔 ", "accent": false},
+    {"text": "독도", "accent": true}
+  ],
+  "mnemonicSublineParts": [
+    {"text": "러일전쟁", "accent": true},
+    {"text": " → ", "accent": false},
+    {"text": "한일의정서", "accent": true},
+    {"text": " → ", "accent": false},
+    {"text": "독도 불법 편입", "accent": true}
+  ],
+  "recapTitle": "러일전쟁과 독도 불법 편입",
+  "recapResult": "러일전쟁 → 한일의정서 → 독도 불법 편입",
+  "recapDetail": "1904 러일전쟁·한일의정서 → 1905 독도 불법 편입"
+}
